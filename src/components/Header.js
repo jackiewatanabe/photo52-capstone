@@ -18,7 +18,7 @@ const styles = {
     backgroundColor: '#000',
     justifyContent: 'center',
     alignItems: 'center',
-    height: 60,
+    height: 40,
     paddingTop: 15,
     shadowColor: '#0000',
     shadowOffset: { width: 0, height: 20 },

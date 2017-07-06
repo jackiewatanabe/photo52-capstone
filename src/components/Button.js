@@ -18,9 +18,12 @@ const styles = {
     alignSelf: 'center',
     color: '#ffffff',
     fontSize: 16,
-    fontWeight: '600',
+    fontWeight: '400',
     paddingTop: 10,
-    paddingBottom: 10
+    paddingBottom: 10,
+    fontFamily: 'Iowan Old Style',
+    letterSpacing: 2
+
   },
   buttonStyle: {
     flex: 1,
@@ -29,8 +32,8 @@ const styles = {
     // borderRadius: 5,
     borderWidth: 1,
     borderColor: '#817f7f',
-    marginLeft: 5,
-    marginRight: 5
+    // marginLeft: 5,
+    // marginRight: 5
   }
 };
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Text, View, Image, Linking } from 'react-native';
+import firebase from 'firebase';
 import Card from './Card';
 import CardSection from './CardSection';
 import Button from './Button';
@@ -18,6 +19,13 @@ const UserDetail = () => {
           </View>
           <View style={styles.usernameContentStyle}>
             <Text style={{ fontFamily: 'Avenir-Light', fontWeight: '100', letterSpacing: 2 }}>sushiigirl</Text>
+          </View>
+          <View>
+            <Button
+              onPress={() => firebase.auth().signOut()}
+            >
+              LOG OUT
+            </Button>
           </View>
         </CardSection>
         <CardSection style={styles.themeContentStyle}>

@@ -1,9 +1,6 @@
 import React from 'react';
-import { Text, View, Image, Linking } from 'react-native';
-import firebase from 'firebase';
-import Card from './Card';
-import CardSection from './CardSection';
-import Button from './Button';
+import { Text, View, Image } from 'react-native';
+import { Card, CardSection, Button } from './common';
 
 
 const UserDetail = () => {
@@ -15,22 +12,32 @@ const UserDetail = () => {
           <View style={styles.thumbnailContainerStyle}>
             <Image
             style={styles.thumbnailStyle}
-            source={{ uri: 'https://upload.wikimedia.org/wikipedia/commons/6/66/Android_robot.png' }} />
+            source={{
+              uri: 'https://upload.wikimedia.org/wikipedia/commons/6/66/Android_robot.png'
+            }}
+            />
           </View>
           <View style={styles.usernameContentStyle}>
-            <Text style={{ fontFamily: 'Avenir-Light', fontWeight: '100', letterSpacing: 2 }}>sushiigirl</Text>
-          </View>
-          <View>
-            <Button
-              onPress={() => firebase.auth().signOut()}
+            <Text
+              style={{
+                fontFamily: 'Avenir-Light',
+                fontWeight: '100',
+                letterSpacing: 2
+              }}
             >
-              LOG OUT
-            </Button>
+              sushiigirl
+            </Text>
           </View>
         </CardSection>
         <CardSection style={styles.themeContentStyle}>
-          <Text style={{ fontFamily: 'Avenir-Light', fontWeight: '100', letterSpacing: 2 }}>THIS WEEK'S THEME</Text>
-
+          <Text style={{
+            fontFamily: 'Avenir-Light',
+            fontWeight: '100',
+            letterSpacing: 2
+          }}
+          >
+            THIS WEEK'S THEME
+          </Text>
         </CardSection>
         <CardSection>
             <Button style={{ flex: 1 }}>NO THEME SET YET</Button>
@@ -40,7 +47,14 @@ const UserDetail = () => {
       <Card>
         <CardSection style={styles.photorollContentStyle}>
           <View>
-            <Text style={{ fontFamily: 'Avenir-Light', fontWeight: '100', letterSpacing: 2 }}>MY PHOTOROLL</Text>
+            <Text style={{
+              fontFamily: 'Avenir-Light',
+              fontWeight: '100',
+              letterSpacing: 2
+            }}
+            >
+              MY PHOTOROLL
+            </Text>
           </View>
         </CardSection>
         <CardSection>
@@ -78,6 +92,7 @@ const styles = {
   usernameContentStyle: {
     justifyContent: 'center',
     alignItems: 'center',
+    marginRight: 100,
   },
   themeContentStyle: {
       flexDirection: 'column',

@@ -3,7 +3,7 @@
 import React from 'react';
 import { AppRegistry, View } from 'react-native';
 import Header from './src/components/Header';
-import UserPage from './src/components/UserPage'
+import UserPage from './src/components/UserPage';
 // import AlbumList from './src/components/AlbumList';
 
 // Create a Component

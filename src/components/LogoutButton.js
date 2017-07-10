@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
 
-const Button = ({ onPress, children }) => {
+const LogoutButton = ({ onPress, children }) => {
   const { buttonStyle, textStyle } = styles;
 
   return (
@@ -17,25 +17,24 @@ const styles = {
   textStyle: {
     alignSelf: 'center',
     color: '#ffffff',
-    fontSize: 16,
-    fontWeight: '400',
-    paddingTop: 10,
-    paddingBottom: 10,
+    fontSize: 8,
+    fontWeight: '200',
+    paddingTop: 3,
+    paddingBottom: 3,
     fontFamily: 'Iowan Old Style',
     letterSpacing: 2
 
   },
   buttonStyle: {
-    flex: 1,
-    alignSelf: 'center',
-    // justifyContent: 'flex-end',
-    backgroundColor: '#817f7f',
+    flex: 2,
+    // alignSelf: 'stretch',
+    backgroundColor: 'red',
     // borderRadius: 5,
-    // borderWidth: 1,
+    borderWidth: 1,
     borderColor: '#817f7f',
     // marginLeft: 5,
     // marginRight: 5
   }
 };
 
-export { Button };
+export default LogoutButton;

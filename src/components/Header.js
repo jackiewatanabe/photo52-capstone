@@ -1,6 +1,8 @@
 // Import libraries for making a Component
 import React from 'react';
 import { Text, View } from 'react-native';
+import firebase from 'firebase';
+import { Button } from './common';
 
 // Make a Component
 const Header = (props) => {
@@ -9,6 +11,7 @@ const Header = (props) => {
   return (
     <View style={viewStyle}>
       <Text style={textStyle}>{props.headerText}</Text>
+      
     </View>
   );
 };

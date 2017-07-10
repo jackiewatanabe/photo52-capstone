@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 import firebase from 'firebase';
 import { Button, Card, CardSection, Input, Spinner } from './common';
 
@@ -50,6 +50,13 @@ class LoginForm extends Component {
   render() {
     return (
       <Card>
+        <CardSection style={{ flex: 1 }}>
+          <View>
+            <Text style={styles.welcomeTextStyle}>Welcome to Photo52!</Text>
+            <Text style={styles.welcomeTextStyle}>Taking better pictures begins with...</Text>
+            <Text style={styles.welcomeTextStyle}>Please enter your login information</Text>
+          </View>
+        </CardSection>
         <CardSection>
           <Input
             placeholder="user@gmail.com"
@@ -84,6 +91,17 @@ const styles = {
     fontSize: 20,
     alignSelf: 'center',
     color: 'red'
+  },
+  welcomeTextStyle: {
+    alignSelf: 'center',
+    paddingBottom: 10,
+    fontFamily: 'Iowan Old Style',
+  },
+  welcomeContainerStyle: {
+    flex: 1,
+    alignSelf: 'center',
+    marginLeft: 10,
+    marginRight: 10,
   }
 };
 

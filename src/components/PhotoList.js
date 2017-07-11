@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React, { Component } from 'react';
 import { ListView, View, Text } from 'react-native';
 import { connect } from 'react-redux';
@@ -22,10 +23,11 @@ class PhotoList extends Component {
       rowHasChanged: (r1, r2) => r1 !== r2
     });
 
-    this.dataSource = ds.clonewithRows(photos);
+    this.dataSource = ds.cloneWithRows(photos);
   }
 
   render() {
+      console.log(this.props);
       return (
         <View>
           <Text>Photo List</Text>
@@ -38,4 +40,12 @@ class PhotoList extends Component {
   }
 }
 
-export default connect(null, { photosFetch })(PhotoList);
+const mapStateToProps = state => {
+  const photos = _.map(state.photos, (val, uid) => {
+    return { ...val, uid };
+  });
+
+  return { photos };
+};
+
+export default connect(mapStateToProps, { photosFetch })(PhotoList);

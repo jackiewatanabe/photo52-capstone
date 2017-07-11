@@ -9,3 +9,5 @@ export const LOGIN_USER_FAIL = 'login_user_FAIL';
 export const LOGIN_USER = 'login_user';
 
 export const PHOTO_UPDATE = 'photo_update';
+
+export const PHOTO_CREATE = 'photo_create';

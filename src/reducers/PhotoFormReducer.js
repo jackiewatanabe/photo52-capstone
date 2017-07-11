@@ -1,5 +1,6 @@
 import {
-  PHOTO_UPDATE
+  PHOTO_UPDATE,
+  PHOTO_CREATE
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -12,6 +13,8 @@ export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case PHOTO_UPDATE:
       return { ...state, [action.payload.prop]: action.payload.value };
+    case PHOTO_CREATE:
+      return INITIAL_STATE;
     default:
       return state;
   }

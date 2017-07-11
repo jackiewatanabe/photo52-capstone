@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import { View, Text } from 'react-native';
+import { View, Text } from 'react-native';
 import firebase from 'firebase';
 import ReduxThunk from 'redux-thunk';
 import { createStore, applyMiddleware } from 'redux';
@@ -9,7 +9,7 @@ import LoginForm from './components/LoginForm';
 import UserPage from './components/UserPage';
 import reducers from './reducers';
 
-
+const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
 
 class App extends Component {
   state = { loggedIn: null };
@@ -55,8 +55,8 @@ class App extends Component {
   }
 
   render() {
-    const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
-    
+
+
     return (
       <Provider store={store}>
         <View>

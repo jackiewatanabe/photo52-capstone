@@ -13,16 +13,32 @@ const RouterComponent = () => {
       </Scene>
       <Scene key="main">
         <Scene
-          onRight={() => Actions.photoCreate()}
-          rightTitle="Add"
-          key="photoList" component={PhotoList} title="Photos"
-          initial
+        key="userPage"
+        component={UserPage}
+        title="PHOTO52" initial
+        onRight={() => Actions.photoCreate()}
+        rightTitle="+"
         />
         <Scene key="photoCreate" component={PhotoCreate} title="Create Photo" />
-        <Scene key="userPage" component={UserPage} title="PHOTO 52" />
+        <Scene
+          key="photoList" component={PhotoList} title="Photos"
+          onLeft={() => Actions.userPage()}
+          leftTitle="User Page"
+          onRight={() => Actions.photoCreate()}
+          rightTitle="+"
+        />
       </Scene>
     </Router>
   );
 };
 
 export default RouterComponent;
+
+
+// <Scene
+//   onRight={() => Actions.photoCreate()}
+//   rightTitle="Add"
+//   key="photoList" component={PhotoList} title="Photos"
+//   initial
+// />
+// <Scene key="photoCreate" component={PhotoCreate} title="Create Photo" />

@@ -7,9 +7,10 @@ import { photoUpdate, photoCreate } from '../actions';
 
 class PhotoCreate extends Component {
   onButtonPress() {
-      const { name, description, category } = this.props;
+      const { name, description, category, image_url } = this.props;
 
-      this.props.photoCreate({ name, description, category: category || 'uncategorized' });
+      this.props.photoCreate({
+        name, description, category: category || 'uncategorized', image_url });
   }
 
   render() {
@@ -31,6 +32,15 @@ class PhotoCreate extends Component {
           value={this.props.description}
           onChangeText={text => this.props.photoUpdate({ prop: 'description', value: text })}
         />
+        </CardSection>
+
+        <CardSection>
+          <Input
+            label="Image URL"
+            placeholder="Enter image URL here"
+            value={this.props.image_url}
+            onChangeText={text => this.props.photoUpdate({ prop: 'image_url', value: text })}
+          />
         </CardSection>
 
         <CardSection style={{ flexDirection: 'column' }}>
@@ -69,9 +79,9 @@ const styles = {
 };
 
 const mapStateToProps = (state) => {
-  const { name, description, category } = state.photoForm;
+  const { name, description, category, image_url } = state.photoForm;
 
-  return { name, description, category };
+  return { name, description, category, image_url };
 };
 
 export default connect(mapStateToProps, { photoUpdate, photoCreate })(PhotoCreate);

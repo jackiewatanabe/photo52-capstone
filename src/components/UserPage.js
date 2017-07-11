@@ -11,7 +11,7 @@ class UserPage extends Component {
 
     return (
       <View>
-        <Header headerText="Authentication" />
+
         <UserDetail />
       </View>
     );
@@ -20,3 +20,5 @@ class UserPage extends Component {
 }
 
 export default UserPage;
+
+// <Header headerText="Authentication" />

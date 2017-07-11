@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
-import { ListView } from 'react-native';
+import { ListView, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 import { photosFetch } from '../actions';
 import PhotoListItem from './PhotoListItem'
@@ -34,11 +34,13 @@ class PhotoList extends Component {
   render() {
       console.log(this.props);
       return (
-        <ListView
-          enableEmptySections
-          dataSource={this.dataSource}
-          renderRow={this.renderRow}
-        />
+        <ScrollView>
+          <ListView
+            enableEmptySections
+            dataSource={this.dataSource}
+            renderRow={this.renderRow}
+          />
+        </ScrollView>
       );
   }
 }

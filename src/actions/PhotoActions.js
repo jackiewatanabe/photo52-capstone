@@ -14,12 +14,12 @@ export const photoUpdate = ({ prop, value }) => {
 };
 
 
-export const photoCreate = ({ name, description, category }) => {
+export const photoCreate = ({ name, description, category, image_url }) => {
   const { currentUser } = firebase.auth();
 
   return (dispatch) => {
     firebase.database().ref(`/users/${currentUser.uid}/photos`)
-    .push({ name, description, category })
+    .push({ name, description, category, image_url })
     .then(() => {
       dispatch({ type: PHOTO_CREATE });
       Actions.photoList({ type: 'reset' });

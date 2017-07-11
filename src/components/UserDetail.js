@@ -1,10 +1,13 @@
 import React from 'react';
+import firebase from 'firebase';
 import { Text, View, Image } from 'react-native';
 import { Card, CardSection, Button } from './common';
+import PhotoList from './PhotoList';
 
+// const { currentUser } = firebase.auth();
 
 const UserDetail = () => {
-
+  console.log('state', this.state);
   return (
     <View>
       <Card>
@@ -36,41 +39,27 @@ const UserDetail = () => {
             letterSpacing: 2
           }}
           >
-            THIS WEEK'S THEME
+            THIS WEEKS THEME
           </Text>
         </CardSection>
         <CardSection>
             <Button style={{ flex: 1 }}>NO THEME SET YET</Button>
         </CardSection>
       </Card>
-
       <Card>
-        <CardSection style={styles.photorollContentStyle}>
-          <View>
-            <Text style={{
-              fontFamily: 'Avenir-Light',
-              fontWeight: '100',
-              letterSpacing: 2
-            }}
-            >
-              MY PHOTOROLL
-            </Text>
-          </View>
-        </CardSection>
         <CardSection>
-          <View style={styles.photorollContentStyle}>
-            <Image
-            style={styles.imageStyle}
-            source={{ uri: 'https://facebook.github.io/react/img/logo_og.png'}}   />
-            <Image
-            style={styles.imageStyle}
-            source={{ uri: 'https://ak.picdn.net/assets/cms/f3819ba883198b89684e2d99064d0972a7fc0d49-stofro_offset_02.png'}}   />
-          </View>
+          <Text style={{
+            fontFamily: 'Avenir-Light',
+            fontWeight: '100',
+            letterSpacing: 2
+        }}>
+            MY PHOTOROLL
+          </Text>
         </CardSection>
+        <PhotoList />
       </Card>
     </View>
   );
-
 };
 
 const styles = {

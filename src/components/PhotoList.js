@@ -1,8 +1,9 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
-import { ListView, View, Text } from 'react-native';
+import { ListView } from 'react-native';
 import { connect } from 'react-redux';
 import { photosFetch } from '../actions';
+import PhotoListItem from './PhotoListItem'
 
 class PhotoList extends Component {
   componentWillMount() {
@@ -26,16 +27,18 @@ class PhotoList extends Component {
     this.dataSource = ds.cloneWithRows(photos);
   }
 
+  renderRow(photo) {
+    return <PhotoListItem photo={photo} />;
+  }
+
   render() {
       console.log(this.props);
       return (
-        <View>
-          <Text>Photo List</Text>
-          <Text>Photo List</Text>
-          <Text>Photo List</Text>
-          <Text>Photo List</Text>
-          <Text>Photo List</Text>
-        </View>
+        <ListView
+          enableEmptySections
+          dataSource={this.dataSource}
+          renderRow={this.renderRow}
+        />
       );
   }
 }

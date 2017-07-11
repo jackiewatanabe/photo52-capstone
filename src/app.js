@@ -8,6 +8,7 @@ import { Spinner } from './components/common';
 import LoginForm from './components/LoginForm';
 import UserPage from './components/UserPage';
 import reducers from './reducers';
+import Router from './Router';
 
 const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
 
@@ -55,13 +56,10 @@ class App extends Component {
   }
 
   render() {
-
-
     return (
       <Provider store={store}>
-        <View>
-          {this.renderContent()}
-        </View>
+        <Router />
+
       </Provider>
 
     );

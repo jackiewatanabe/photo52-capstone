@@ -2,17 +2,23 @@ import React, { Component } from 'react';
 import { Text, Picker } from 'react-native';
 import { connect } from 'react-redux';
 import { Card, CardSection, Input, Button } from './common';
-import { photoUpdate } from '../actions';
+import { photoUpdate, photoCreate } from '../actions';
 
 
 class PhotoCreate extends Component {
+  onButtonPress() {
+      const { name, description, category } = this.props;
+
+      this.props.photoCreate({ name, description, category: category || 'uncategorized' });
+  }
+
   render() {
     return (
       <Card>
         <CardSection>
           <Input
-            label="Enter image name here"
-            placeholder="Jane"
+            label="Name"
+            placeholder="Enter image name here"
             value={this.props.name}
             onChangeText={text => this.props.photoUpdate({ prop: 'name', value: text })}
           />
@@ -33,6 +39,7 @@ class PhotoCreate extends Component {
             selectedValue={this.props.category}
             onValueChange={value => this.props.photoUpdate({ prop: 'category', value })}
           >
+            <Picker.Item label="Uncategorized" value="uncategorized" />
             <Picker.Item label="Portrait" value="portrait" />
             <Picker.Item label="Landscape" value="landscape" />
             <Picker.Item label="Animals" value="animals" />
@@ -41,7 +48,9 @@ class PhotoCreate extends Component {
         </CardSection>
 
         <CardSection>
-          <Button>
+          <Button
+           onPress={this.onButtonPress.bind(this)}
+          >
             CREATE
           </Button>
         </CardSection>
@@ -65,4 +74,4 @@ const mapStateToProps = (state) => {
   return { name, description, category };
 };
 
-export default connect(mapStateToProps, { photoUpdate})(PhotoCreate);
+export default connect(mapStateToProps, { photoUpdate, photoCreate })(PhotoCreate);

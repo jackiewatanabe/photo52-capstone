@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { Picker } from 'react-native';
 import { connect } from 'react-redux';
 import { Card, CardSection, Input, Button } from './common';
 import { photoUpdate } from '../actions';
@@ -11,7 +11,7 @@ class PhotoCreate extends Component {
       <Card>
         <CardSection>
           <Input
-            label="Name"
+            label="Enter image name here"
             placeholder="Jane"
             value={this.props.name}
             onChangeText={text => this.props.photoUpdate({ prop: 'name', value: text })}
@@ -20,11 +20,24 @@ class PhotoCreate extends Component {
 
         <CardSection>
         <Input
-          label="Phone"
-          placeholder="555-555-5555"
-          value={this.props.phone}
-          onChangeText={text => this.props.photoUpdate({ prop: 'phone', value: text })}
+          label="Description"
+          placeholder="Enter description here"
+          value={this.props.description}
+          onChangeText={text => this.props.photoUpdate({ prop: 'description', value: text })}
         />
+        </CardSection>
+
+        <CardSection>
+          <Picker
+            style={{ flex: 1 }}
+            selectedValue={this.props.category}
+            onValueChange={value => this.props.photoUpdate({ prop: 'category', value })}
+          >
+            <Picker.Item label="Portrait" value="portrait" />
+            <Picker.Item label="Landscape" value="landscape" />
+            <Picker.Item label="Animals" value="animals" />
+            <Picker.Item label="Fashion" value="fashion" />
+          </Picker>
         </CardSection>
 
         <CardSection>
@@ -40,9 +53,9 @@ class PhotoCreate extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { name, phone, shift } = state.photoForm;
+  const { name, description, category } = state.photoForm;
 
-  return { name, phone, shift };
+  return { name, description, category };
 };
 
 export default connect(mapStateToProps, { photoUpdate})(PhotoCreate);

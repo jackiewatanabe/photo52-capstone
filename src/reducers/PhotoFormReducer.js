@@ -4,8 +4,8 @@ import {
 
 const INITIAL_STATE = {
   name: '',
-  phone: '',
-  shift: ''
+  description: '',
+  category: ''
 };
 
 export default (state = INITIAL_STATE, action) => {

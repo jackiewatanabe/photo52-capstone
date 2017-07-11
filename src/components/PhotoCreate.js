@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Picker } from 'react-native';
+import { Text, Picker } from 'react-native';
 import { connect } from 'react-redux';
 import { Card, CardSection, Input, Button } from './common';
 import { photoUpdate } from '../actions';
@@ -27,9 +27,9 @@ class PhotoCreate extends Component {
         />
         </CardSection>
 
-        <CardSection>
+        <CardSection style={{ flexDirection: 'column' }}>
+          <Text style={styles.pickerTextStyle}>Category</Text>
           <Picker
-            style={{ flex: 1 }}
             selectedValue={this.props.category}
             onValueChange={value => this.props.photoUpdate({ prop: 'category', value })}
           >
@@ -51,6 +51,13 @@ class PhotoCreate extends Component {
   }
 
 }
+
+const styles = {
+  pickerTextStyle: {
+    fontSize: 18,
+    paddingLeft: 20
+  }
+};
 
 const mapStateToProps = (state) => {
   const { name, description, category } = state.photoForm;

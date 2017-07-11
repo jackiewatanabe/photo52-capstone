@@ -11,3 +11,5 @@ export const LOGIN_USER = 'login_user';
 export const PHOTO_UPDATE = 'photo_update';
 
 export const PHOTO_CREATE = 'photo_create';
+
+export const PHOTOS_FETCH_SUCCESS = 'photos_fetch_success';

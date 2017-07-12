@@ -2,23 +2,60 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 // import axios from 'axios';
 // import UserDetail from './UserDetail';
-import { Card, CardSection, Button } from './common';
+import { Card, CardSection, Button, Spinner } from './common';
 
 
 class ThemePage extends Component {
+    state = { theme: null };
+
+
+    // componentWillMount() {
+    //   // if (this.state.theme) {
+    //   //   this.setState({ theme: 'something' });
+    //   // } else {
+    //   //   this.setState({ theme: null });
+    //   // }
+    //   console.log('Im in component willmount themepage');
+    //   // this.setState({ theme: 'something' });
+    // }
+
     onButtonPress() {
-      console.log(this.props);
+      console.log('onButtonPress:', this.state.theme);
+      this.setState({ theme: true });
+      return <Text>BLACK AND WHITE</Text>;
     }
 
-    renderTheme() {
-      if (this.props.loading) {
-        return <Spinner size="large" />;
+    renderButton() {
+      switch (this.state.theme) {
+        case true:
+          console.log('Im in switch case true in renderButton');
+          console.log('renderButton:', this.state.theme);
+          return (
+            <Card>
+              <CardSection>
+                <Text style={{
+                  fontFamily: 'Iowan Old Style',
+                  fontSize: 25,
+                  letterSpacing: 2 }}
+                >BLACK AND WHITE</Text>
+              </CardSection>
+            </Card>
+          );
+        case false:
+          console.log('Im in switch case false in renderButton');
+          console.log('renderButton:', this.state.theme);
+          return (
+            <Button onPress={this.onButtonPress.bind(this)}>
+              GIVE ME A CHALLENGE
+            </Button>
+          );
+        default:
+        console.log('Im in default');
+        console.log('renderButton:', this.state.theme);
+          return (<Button onPress={this.onButtonPress.bind(this)}>
+            GIVE ME A CHALLENGE
+          </Button>);
       }
-      return (
-        <Button onPress={this.onButtonPress.bind(this)}>
-          LOG IN
-        </Button>
-      );
     }
 
     render() {
@@ -37,9 +74,7 @@ class ThemePage extends Component {
             </View>
           </CardSection>
           <CardSection>
-            <Button onPress={this.onButtonPress.bind(this)}>
-              GIVE ME A CHALLENGE
-            </Button>
+            {this.renderButton()}
           </CardSection>
 
         </Card>

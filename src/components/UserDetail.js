@@ -36,7 +36,7 @@ const UserDetail = () => {
             </Text>
           </View>
         </CardSection>
-      
+
         <ThemeItem />
       </Card>
       <Card>

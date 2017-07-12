@@ -13,7 +13,7 @@ import Router from './Router';
 const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
 
 class App extends Component {
-  state = { loggedIn: null };
+  state = { loggedIn: null, themeSet: false, user: null };
 
   componentWillMount() {
       firebase.initializeApp({
@@ -28,6 +28,7 @@ class App extends Component {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         this.setState({ loggedIn: true });
+        this.setState({ user: user });
       } else {
         this.setState({ loggedIn: false });
       }
@@ -37,6 +38,7 @@ class App extends Component {
   renderContent() {
     switch (this.state.loggedIn) {
       case true:
+
         return (
           // <Button
           //   onPress={() => firebase.auth().signOut()}
@@ -44,9 +46,7 @@ class App extends Component {
           //   LOG OUT
           // </Button>
 
-          <UserPage />
-
-
+          <UserPage user={this.state.user} />
         );
       case false:
         return <LoginForm />;
@@ -56,12 +56,11 @@ class App extends Component {
   }
 
   render() {
+    console.log('app.js render: ', this.state.user);
     return (
       <Provider store={store}>
         <Router />
-
       </Provider>
-
     );
   }
 }

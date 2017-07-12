@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
+import { connect } from 'react-redux';
 // import axios from 'axios';
 import UserDetail from './UserDetail';
 // import { Header } from './common';
@@ -13,14 +14,20 @@ class UserPage extends Component {
     // console.log('user: ', this.user);
 
     return (
-      <View user={this.props.user} theme={this.state.theme}>
-        <UserDetail user={this.props.user} theme={this.state.theme} />
+      <View>
+        <UserDetail />
       </View>
     );
   }
 
 }
 
-export default UserPage;
+const mapStateToProps = ({ auth }) => {
+  const { email, password, error, loading } = auth;
+
+  return { email, password, error, loading };
+};
+
+export default connect(null, {})(UserPage);
 
 // <Header headerText="Authentication" />

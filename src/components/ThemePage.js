@@ -25,21 +25,28 @@ class ThemePage extends Component {
       return <Text>BLACK AND WHITE</Text>;
     }
 
-    renderButton() {
+    renderChallengeButton() {
       switch (this.state.theme) {
         case true:
           console.log('Im in switch case true in renderButton');
           console.log('renderButton:', this.state.theme);
           return (
-            <Card>
-              <CardSection>
-                <Text style={{
-                  fontFamily: 'Iowan Old Style',
-                  fontSize: 25,
-                  letterSpacing: 2 }}
-                >BLACK AND WHITE</Text>
-              </CardSection>
-            </Card>
+                <View style={{ alignSelf: 'center', flex: 1, paddingBottom: 15, paddingTop: 10 }}>
+                  <Text style={{
+                    alignSelf: 'center',
+                    fontFamily: 'Avenir-Light' }}
+                  >
+                    YOUR THEME FOR THE WEEK IS
+                  </Text>
+                  <Text style={{
+                    paddingTop: 20,
+                    paddingBottom: 20,
+                    alignSelf: 'center',
+                    fontFamily: 'Iowan Old Style',
+                    fontSize: 30,
+                    letterSpacing: 2 }}
+                  >BLACK AND WHITE</Text>
+                </View>
           );
         case false:
           console.log('Im in switch case false in renderButton');
@@ -58,29 +65,87 @@ class ThemePage extends Component {
       }
     }
 
+    renderInspireButton() {
+      switch (this.state.theme) {
+        case true:
+          return (
+              <Button>GET INSPIRED</Button>
+          );
+        case false: break;
+        default: break;
+      }
+    }
+
+    renderUploadButton() {
+      switch (this.state.theme) {
+        case true:
+          return (
+              <Button>UPLOAD PHOTO</Button>
+          );
+        case false: break;
+        default: break;
+      }
+    }
+
+    renderCountdown() {
+          switch (this.state.theme) {
+            case true:
+              return (
+                  <View style={{ alignSelf: 'center', flex: 1, paddingBottom: 30, paddingTop: 10 }}>
+                    <Text style={{
+                      alignSelf: 'center',
+                      fontFamily: 'Avenir-Light',
+                      fontWeight: '100',
+                      fontSize: 40,
+                      letterSpacing: 2 }}>
+                      7 DAYS
+                    </Text>
+                    <Text style={{
+                      alignSelf: 'center',
+                      fontFamily: 'Avenir-Light',
+                      fontWeight: '100',
+                      fontSize: 15,
+                      letterSpacing: 2 }}>
+                      LEFT IN CHALLENGE
+                    </Text>
+                  </View>
+              );
+            case false: break;
+            default: break;
+          }
+    }
+
+
     render() {
       return (
         <Card>
           <CardSection>
             <View style={{ alignSelf: 'center', flex: 1, paddingBottom: 30, paddingTop: 10 }}>
-            <Text
-              style={{
-                alignSelf: 'center',
-                fontFamily: 'Avenir-Light',
-                fontWeight: '100',
-                fontSize: 30,
-                letterSpacing: 2 }}
-            >WEEK 1 OF 52</Text>
+              <Text
+                style={{
+                  alignSelf: 'center',
+                  fontFamily: 'Avenir-Light',
+                  fontWeight: '100',
+                  fontSize: 30,
+                  letterSpacing: 2 }}
+              >WEEK 1 OF 52</Text>
             </View>
           </CardSection>
           <CardSection>
-            {this.renderButton()}
+            {this.renderChallengeButton()}
           </CardSection>
-
+          <CardSection>
+            {this.renderCountdown()}
+          </CardSection>
+          <CardSection>
+            {this.renderInspireButton()}
+          </CardSection>
+          <CardSection>
+            {this.renderUploadButton()}
+          </CardSection>
         </Card>
       );
     }
-
 }
 
 export default ThemePage;

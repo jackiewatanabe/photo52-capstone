@@ -3,11 +3,12 @@ import { View } from 'react-native';
 import { connect } from 'react-redux';
 // import axios from 'axios';
 import UserDetail from './UserDetail';
+import { loginUser } from '../actions';
 // import { Header } from './common';
 
 
 class UserPage extends Component {
-  state = { theme: null };
+  state = { theme: null, user: this.props.user };
 
   render() {
     console.log('state: ', this.state);
@@ -15,7 +16,7 @@ class UserPage extends Component {
 
     return (
       <View>
-        <UserDetail />
+        <UserDetail user={this.state.user} />
       </View>
     );
   }
@@ -23,11 +24,9 @@ class UserPage extends Component {
 }
 
 const mapStateToProps = ({ auth }) => {
-  const { email, password, error, loading } = auth;
+  const { email, password, error, loading, user } = auth;
 
-  return { email, password, error, loading };
+  return { email, password, error, loading, user };
 };
 
-export default connect(null, {})(UserPage);
-
-// <Header headerText="Authentication" />
+export default connect(mapStateToProps, { loginUser })(UserPage);

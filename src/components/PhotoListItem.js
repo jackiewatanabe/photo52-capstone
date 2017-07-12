@@ -7,9 +7,8 @@ class PhotoListItem extends Component {
     const { name, image_url } = this.props.photo;
 
     return (
-      <CardSection>
+      <CardSection style={{ paddingLeft: 5, paddingRight: 5, paddingTop: 0, paddingBottom: 0 }}>
           <Image style={styles.imageStyle} source={{ uri: `${image_url}` }} />
-
       </CardSection>
     );
   }

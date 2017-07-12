@@ -8,9 +8,8 @@ import ThemeItem from './ThemeItem';
 // const { currentUser } = firebase.auth();
 
 
-const UserDetail = () => {
-  console.log('props: ', this.props);
-
+const UserDetail = (props) => {
+  console.log('props: ', props.user);
 
   return (
     <View>
@@ -32,7 +31,7 @@ const UserDetail = () => {
                 letterSpacing: 2
               }}
             >
-              sushiigirl
+              {props.user.email}
             </Text>
           </View>
         </CardSection>

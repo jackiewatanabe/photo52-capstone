@@ -11,6 +11,8 @@ import ThemeItem from './ThemeItem';
 const UserDetail = (props) => {
   console.log('props: ', props.user);
 
+  const { user, theme } = props;
+
   return (
     <View>
       <Card>
@@ -31,12 +33,12 @@ const UserDetail = (props) => {
                 letterSpacing: 2
               }}
             >
-              {props.user.email}
+              {user.email}
             </Text>
           </View>
         </CardSection>
 
-        <ThemeItem />
+        <ThemeItem theme={theme} />
       </Card>
       <Card>
         <CardSection>

@@ -11,7 +11,43 @@ class ThemeItem extends Component {
 
       // this.props.photoCreate({
       //   name, description, category: category || 'uncategorized', image_url });
-      Actions.themePage();
+      Actions.themePage({ theme: this.props.theme });
+  }
+
+  renderButton() {
+
+    switch (this.props.theme === '') {
+      case true:
+        return (
+          <Button
+            onPress={this.onButtonPress.bind(this)}
+            style={{ flex: 1 }}
+          >
+            NO THEME SET YET
+          </Button>
+        );
+      case false:
+        console.log('renderButton false in ThemeItem: ', this.props.theme);
+        return (
+          <Button
+            onPress={this.onButtonPress.bind(this)}
+            style={{ flex: 1 }}
+          >
+            {this.props.theme}
+          </Button>
+      );
+      default:
+        console.log('renderButton default in ThemeItem: ', this.props.theme);
+        return (
+
+        <Button
+          onPress={this.onButtonPress.bind(this)}
+          style={{ flex: 1 }}
+        >
+          NO THEME SET YET
+        </Button>
+      );
+    }
   }
 
   render() {
@@ -29,12 +65,7 @@ class ThemeItem extends Component {
           </Text>
         </CardSection>
         <CardSection>
-            <Button
-              onPress={this.onButtonPress.bind(this)}
-              style={{ flex: 1 }}
-            >
-              NO THEME SET YET
-            </Button>
+            {this.renderButton()}
         </CardSection>
       </Card>
     );

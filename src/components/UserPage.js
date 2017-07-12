@@ -8,7 +8,7 @@ import { loginUser } from '../actions';
 
 
 class UserPage extends Component {
-  state = { theme: null, user: this.props.user };
+  state = { theme: '', user: this.props.user };
 
   render() {
     console.log('state: ', this.state);
@@ -16,7 +16,7 @@ class UserPage extends Component {
 
     return (
       <View>
-        <UserDetail user={this.state.user} />
+        <UserDetail user={this.state.user} theme={this.state.theme}/>
       </View>
     );
   }

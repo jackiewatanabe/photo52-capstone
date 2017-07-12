@@ -8,7 +8,7 @@ import { loginUser } from '../actions';
 
 
 class UserPage extends Component {
-  state = { theme: '', user: this.props.user };
+  state = { theme: this.props.theme, user: this.props.user };
 
   render() {
     console.log('state: ', this.state);
@@ -24,9 +24,9 @@ class UserPage extends Component {
 }
 
 const mapStateToProps = ({ auth }) => {
-  const { email, password, error, loading, user } = auth;
+  const { email, password, error, loading, user, theme } = auth;
 
-  return { email, password, error, loading, user };
+  return { email, password, error, loading, user, theme };
 };
 
 export default connect(mapStateToProps, { loginUser })(UserPage);

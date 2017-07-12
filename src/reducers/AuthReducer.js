@@ -6,7 +6,7 @@ import {
   LOGIN_USER
 } from '../actions/types';
 
-const INITIAL_STATE = { email: '', password: '', user: null, error: '', loading: false };
+const INITIAL_STATE = { email: '', password: '', user: null, error: '', loading: false, theme: '' };
 
 export default (state = INITIAL_STATE, action) => {
     console.log(action);
@@ -17,10 +17,10 @@ export default (state = INITIAL_STATE, action) => {
       case PASSWORD_CHANGED:
         return { ...state, password: action.payload };
       case LOGIN_USER:
-        return { ...state, loading: true, error: '' };
+        return { ...state, loading: true, error: '', theme: '' };
       case LOGIN_USER_SUCCESS:
         return {
-          ...state, ...INITIAL_STATE, user: action.payload,
+          ...state, ...INITIAL_STATE, user: action.payload, theme: ''
         };
         // error: '',
         // loading: false,

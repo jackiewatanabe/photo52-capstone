@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 // import axios from 'axios';
 // import UserDetail from './UserDetail';
+import { Actions } from 'react-native-router-flux';
 import { Card, CardSection, Button, Spinner } from './common';
 
 
@@ -25,6 +26,10 @@ class ThemePage extends Component {
       return <Text>BLACK AND WHITE</Text>;
     }
 
+    onUploadPress() {
+      Actions.photoCreate();
+    }
+
     renderChallengeButton() {
       switch (this.state.theme) {
         case true:
@@ -39,7 +44,7 @@ class ThemePage extends Component {
                     YOUR THEME FOR THE WEEK IS
                   </Text>
                   <Text style={{
-                    paddingTop: 20,
+                    paddingTop: 10,
                     paddingBottom: 20,
                     alignSelf: 'center',
                     fontFamily: 'Iowan Old Style',
@@ -80,7 +85,7 @@ class ThemePage extends Component {
       switch (this.state.theme) {
         case true:
           return (
-              <Button>UPLOAD PHOTO</Button>
+              <Button onPress={this.onUploadPress.bind(this)}>UPLOAD PHOTO</Button>
           );
         case false: break;
         default: break;

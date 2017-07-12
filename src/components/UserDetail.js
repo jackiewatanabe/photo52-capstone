@@ -1,6 +1,6 @@
 import React from 'react';
 import firebase from 'firebase';
-import { Text, View, Image } from 'react-native';
+import { ScrollView, Text, View, Image } from 'react-native';
 import { Card, CardSection, Button } from './common';
 import PhotoList from './PhotoList';
 import ThemeItem from './ThemeItem';
@@ -49,6 +49,7 @@ const UserDetail = () => {
             MY PHOTOROLL
           </Text>
         </CardSection>
+
         <PhotoList />
       </Card>
     </View>
@@ -62,8 +63,7 @@ const styles = {
     width: 50,
     marginRight: 5,
     borderRadius: 25,
-    resizeMode: 'contain'
-
+    resizeMode: 'contain',
   },
   thumbnailContainerStyle: {
     justifyContent: 'center',
@@ -102,6 +102,9 @@ const styles = {
     justifyContent: 'space-around',
     // flexWrap: 'wrap',
     // marginTop: 100
+  },
+  photorollContainerStyle: {
+    flex: 1
   }
 
 };

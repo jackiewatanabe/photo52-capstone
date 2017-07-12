@@ -34,7 +34,7 @@ class PhotoList extends Component {
   render() {
       console.log(this.props);
       return (
-        <ScrollView>
+        <ScrollView style={{ height: 400 }}>
           <ListView
             enableEmptySections
             dataSource={this.dataSource}

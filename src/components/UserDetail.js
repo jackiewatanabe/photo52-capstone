@@ -3,11 +3,15 @@ import firebase from 'firebase';
 import { Text, View, Image } from 'react-native';
 import { Card, CardSection, Button } from './common';
 import PhotoList from './PhotoList';
+import ThemeItem from './ThemeItem';
 
 // const { currentUser } = firebase.auth();
 
+
 const UserDetail = () => {
-  console.log('state', this.state);
+  console.log('props: ', this.props);
+
+
   return (
     <View>
       <Card>
@@ -32,19 +36,8 @@ const UserDetail = () => {
             </Text>
           </View>
         </CardSection>
-        <CardSection style={styles.themeContentStyle}>
-          <Text style={{
-            fontFamily: 'Avenir-Light',
-            fontWeight: '100',
-            letterSpacing: 2
-          }}
-          >
-            THIS WEEKS THEME
-          </Text>
-        </CardSection>
-        <CardSection>
-            <Button style={{ flex: 1 }}>NO THEME SET YET</Button>
-        </CardSection>
+      
+        <ThemeItem />
       </Card>
       <Card>
         <CardSection>

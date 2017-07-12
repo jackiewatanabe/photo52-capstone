@@ -4,6 +4,7 @@ import LoginForm from './components/LoginForm';
 import PhotoList from './components/PhotoList';
 import UserPage from './components/UserPage';
 import PhotoCreate from './components/PhotoCreate';
+import ThemePage from './components/ThemePage';
 
 const RouterComponent = () => {
   return (
@@ -21,7 +22,14 @@ const RouterComponent = () => {
         />
         <Scene key="photoCreate" component={PhotoCreate} title="Create Photo" />
         <Scene
-          key="photoList" component={PhotoList} title="Photos"
+          key="photoList" component={PhotoList} title="Photoroll"
+          onLeft={() => Actions.userPage()}
+          leftTitle="User Page"
+          onRight={() => Actions.photoCreate()}
+          rightTitle="+"
+        />
+        <Scene
+          key="themePage" component={ThemePage} title="Theme Page"
           onLeft={() => Actions.userPage()}
           leftTitle="User Page"
           onRight={() => Actions.photoCreate()}

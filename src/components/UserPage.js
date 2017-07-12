@@ -7,7 +7,7 @@ import { Header } from './common';
 
 class UserPage extends Component {
   render() {
-    // console.log(this.state);
+    console.log('state: ', this.state);
 
     return (
       <View>

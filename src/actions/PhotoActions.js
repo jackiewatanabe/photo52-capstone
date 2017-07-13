@@ -3,20 +3,12 @@ import { Actions } from 'react-native-router-flux';
 import {
   PHOTO_UPDATE,
   PHOTO_CREATE,
-  PHOTOS_FETCH_SUCCESS,
-  THEME_CHANGEDO
+  PHOTOS_FETCH_SUCCESS
 } from './types';
 
 export const photoUpdate = ({ prop, value }) => {
   return {
     type: PHOTO_UPDATE,
-    payload: { prop, value }
-  };
-};
-
-export const themeChangedo = ({ prop, value }) => {
-  return {
-    type: THEME_CHANGEDO,
     payload: { prop, value }
   };
 };

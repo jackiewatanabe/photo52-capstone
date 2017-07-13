@@ -27,13 +27,20 @@ class ThemePage extends Component {
     // }
 
     onButtonPress() {
+
+      const myThemes = ['BLACK AND WHITE', 'LEADING LINES', 'CIRCLES', 'WEEE!!!', 'COFFEE', 'MORNING', 'LONG EXPOSURE', 'NIGHT SKY', 'PORTRAIT OF A STRANGER', 'WATER', 'SELF-PORTRAIT', 'SILHOUTTE', 'MOVEMENT', 'MESSY', 'WEATHER', 'TRANSPORTATION', 'BLUE', 'RED', 'COLORS', 'MINIMALISM', 'BOKEH', 'SOLITUDE', 'GET HIGH', 'GET LOW', 'FASHION', 'TRENDY', 'STREET CANDID', 'FOOD', 'SYMMETRY', 'ASYMMETRY'];
+      const rand = myThemes[Math.floor(Math.random() * myThemes.length)];
       // const { theme } = this.state;
       // this.setState({ theme: 'WEEEEE' });
       console.log('onButtonPress-before themeChanged: ', this.props.theme);
-      this.props.themeChanged('WEEE');
+      this.props.themeChanged(rand);
       console.log('onButtonPress:', this.props.theme);
       // ;
       // return <Text>BLACK AND WHITE</Text>;
+    }
+
+    onInspirationPress() {
+      Actions.inspirationPage();
     }
 
     onUploadPress() {
@@ -87,7 +94,7 @@ class ThemePage extends Component {
       switch (this.props.theme !== '') {
         case true:
           return (
-              <Button>GET INSPIRED</Button>
+              <Button onPress={this.onInspirationPress.bind(this)}>GET INSPIRED</Button>
           );
         case false: break;
         default: break;

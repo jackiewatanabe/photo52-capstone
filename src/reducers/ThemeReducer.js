@@ -1,16 +1,16 @@
 import {
-  THEME_CREATE
+  SEARCH_PHOTOS_FETCH_SUCCESS
 } from '../actions/types';
 
-const INITIAL_STATE = { theme: null };
+const INITIAL_STATE = {};
 
 
 export default (state = INITIAL_STATE, action) => {
     console.log(action);
 
     switch (action.type) {
-      case THEME_CREATE:
-        return { ...state, theme: action.payload };
+      case SEARCH_PHOTOS_FETCH_SUCCESS:
+        return action.payload;
       default:
         return state;
   }

@@ -18,4 +18,4 @@ export const USER_SHOW = 'user_show';
 
 export const THEME_CHANGED = 'theme_changed';
 
-export const THEME_CHANGEDO = 'theme_changedo';
+export const SEARCH_PHOTOS_FETCH_SUCCESS = 'search_photos_fetch_success';

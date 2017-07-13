@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { ListView, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 import { photosFetch } from '../actions';
-import PhotoListItem from './PhotoListItem'
+import PhotoListItem from './PhotoListItem';
 
 class PhotoList extends Component {
   componentWillMount() {

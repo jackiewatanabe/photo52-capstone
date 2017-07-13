@@ -5,6 +5,7 @@ import PhotoList from './components/PhotoList';
 import UserPage from './components/UserPage';
 import PhotoCreate from './components/PhotoCreate';
 import ThemePage from './components/ThemePage';
+import InspirationPage from './components/InspirationPage';
 
 const RouterComponent = () => {
   return (
@@ -30,6 +31,13 @@ const RouterComponent = () => {
         />
         <Scene
           key="themePage" component={ThemePage} title="Theme Page"
+          onLeft={() => Actions.userPage()}
+          leftTitle="User Page"
+          onRight={() => Actions.photoCreate()}
+          rightTitle="+"
+        />
+        <Scene
+          key="inspirationPage" component={InspirationPage} title="Inspiration Page"
           onLeft={() => Actions.userPage()}
           leftTitle="User Page"
           onRight={() => Actions.photoCreate()}

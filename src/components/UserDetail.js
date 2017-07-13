@@ -21,7 +21,7 @@ const UserDetail = (props) => {
             <Image
             style={styles.thumbnailStyle}
             source={{
-              uri: 'https://upload.wikimedia.org/wikipedia/commons/6/66/Android_robot.png'
+              uri: 'https://farm8.staticflickr.com/7290/12125301174_52146c676a_s.jpg'
             }}
             />
           </View>
@@ -37,7 +37,6 @@ const UserDetail = (props) => {
             </Text>
           </View>
         </CardSection>
-
         <ThemeItem theme={theme} />
       </Card>
       <Card>
@@ -50,9 +49,7 @@ const UserDetail = (props) => {
             MY PHOTOROLL
           </Text>
         </CardSection>
-        <CardSection>
         <PhotoList />
-        </CardSection>
       </Card>
     </View>
   );
@@ -61,10 +58,10 @@ const UserDetail = (props) => {
 const styles = {
 
   thumbnailStyle: {
-    height: 50,
-    width: 50,
+    height: 60,
+    width: 60,
     marginRight: 5,
-    borderRadius: 25,
+    borderRadius: 30,
     resizeMode: 'contain',
   },
   thumbnailContainerStyle: {

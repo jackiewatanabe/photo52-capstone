@@ -2,9 +2,10 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 // import { View } from 'react-native';
 import { connect } from 'react-redux';
-import { ListView } from 'react-native';
+import { ScrollView, ListView, Text, View } from 'react-native';
 // import axios from 'axios';
-import { searchPhotosFetch, photosFetch } from '../actions';
+import { Card, CardSection } from './common';
+import { searchPhotosFetch } from '../actions';
 import InspirationItem from './InspirationItem';
 
 
@@ -38,6 +39,23 @@ class InspirationPage extends Component {
     console.log(this.props);
     return (
       <ScrollView style={{ height: 400 }}>
+        <Card>
+          <CardSection>
+            <View
+              style={{ flex: 1, alignSelf: 'center'
+              }}
+            >
+              <Text style={{
+                alignSelf: 'center',
+                fontFamily: 'Avenir-Light',
+                fontWeight: '100',
+                fontSize: 30,
+                letterSpacing: 2 }}
+              >INSPIRATION
+              </Text>
+            </View>
+          </CardSection>
+        </Card>
         <ListView
           enableEmptySections
           dataSource={this.dataSource}
@@ -48,17 +66,14 @@ class InspirationPage extends Component {
   }
 }
 
-const mapStateToProps = (themes) => {
+const mapStateToProps = state => {
+  console.log('mapstate to props: themes.photos: ', state);
 
-  const { theme } = themes;
+    const photos = _.map(state.themes.photos, (val, uid) => {
+      return { ...val, uid };
+    });
 
-  return { theme };
+    return { photos };
+  };
 
-  // const results = _.map(state.themes, (val, uid) => {
-  //   return { ...val, uid };
-  // });
-  //
-  // return { results };
-};
-
-export default connect(null, { searchPhotosFetch })(InspirationPage);
+export default connect(mapStateToProps, { searchPhotosFetch })(InspirationPage);

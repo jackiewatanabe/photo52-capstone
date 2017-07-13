@@ -7,7 +7,7 @@ class InspirationItem extends Component {
     const { name, image_url } = this.props.photo;
 
     return (
-      <CardSection style={{ paddingTop: 0, paddingBottom: 0 }}>
+      <CardSection style={{ alignSelf: 'center', paddingTop: 0, paddingBottom: 0 }}>
           <Image style={styles.imageStyle} source={{ uri: `${image_url}` }} />
       </CardSection>
     );

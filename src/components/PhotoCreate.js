@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Text, Picker } from 'react-native';
 import { connect } from 'react-redux';
+import CameraRollPicker from 'react-native-camera-roll-picker';
 import { Card, CardSection, Input, Button } from './common';
 import { photoUpdate, photoCreate } from '../actions';
 
@@ -64,7 +65,11 @@ class PhotoCreate extends Component {
             CREATE
           </Button>
         </CardSection>
-
+        <CardSection>
+        <CameraRollPicker
+          callback={this.getSelectedImages}
+        />
+        </CardSection>
       </Card>
     );
   }

@@ -11,7 +11,13 @@ import InspirationItem from './InspirationItem';
 
 class InspirationPage extends Component {
   componentWillMount() {
-    this.props.searchPhotosFetch();
+    // console.log('in INSPIRATION PAGE:', this.props.theme);
+    // this.props.searchPhotosFetch();
+    const { theme } = this.props;
+
+    this.props.searchPhotosFetch({
+      theme });
+
     // this.props.photosFetch();
     this.createDataSource(this.props);
   }
@@ -48,11 +54,19 @@ class InspirationPage extends Component {
               <Text style={{
                 alignSelf: 'center',
                 fontFamily: 'Avenir-Light',
-                fontWeight: '100',
-                fontSize: 30,
+                fontWeight: 'normal',
+                fontSize: 15,
                 letterSpacing: 2 }}
               >INSPIRATION
               </Text>
+              <Text style={{
+                paddingTop: 10,
+                paddingBottom: 20,
+                textAlign: 'center',
+                alignSelf: 'center',
+                fontFamily: 'Iowan Old Style',
+                fontSize: 35,
+                letterSpacing: 2 }}>{this.props.theme}</Text>
             </View>
           </CardSection>
         </Card>
@@ -68,12 +82,12 @@ class InspirationPage extends Component {
 
 const mapStateToProps = state => {
   console.log('mapstate to props: themes.photos: ', state);
-
+    const theme = state.auth.theme
     const photos = _.map(state.themes.photos, (val, uid) => {
       return { ...val, uid };
     });
 
-    return { photos };
+    return { photos, theme };
   };
 
 export default connect(mapStateToProps, { searchPhotosFetch })(InspirationPage);

@@ -2,12 +2,18 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 // import axios from 'axios';
 // import UserDetail from './UserDetail';
+import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import { Card, CardSection, Button, Spinner } from './common';
+import { Card, CardSection, Button } from './common';
+import { themeChanged } from '../actions';
 
 
 class ThemePage extends Component {
-    state = { theme: this.props.theme };
+    // state = { theme: this.props.theme };
+
+    componentWillMount() {
+      // this.setState(this.props.themeChanged('asdf'));
+    }
 
 
     // componentWillMount() {
@@ -21,9 +27,13 @@ class ThemePage extends Component {
     // }
 
     onButtonPress() {
-      console.log('onButtonPress:', this.state.theme);
-      this.setState({ theme: 'WEEEEE' });
-      return <Text>BLACK AND WHITE</Text>;
+      // const { theme } = this.state;
+      // this.setState({ theme: 'WEEEEE' });
+      console.log('onButtonPress-before themeChanged: ', this.props.theme);
+      this.props.themeChanged('WEEE');
+      console.log('onButtonPress:', this.props.theme);
+      // ;
+      // return <Text>BLACK AND WHITE</Text>;
     }
 
     onUploadPress() {
@@ -31,39 +41,42 @@ class ThemePage extends Component {
     }
 
     renderChallengeButton() {
-      switch (this.state.theme === '') {
+      switch (this.props.theme === '') {
         case true:
-          console.log('Im in switch case true in renderButton');
-          console.log('renderButton:', this.state.theme);
+          console.log('THEMEPAGE Im in switch case true in renderButton');
+          console.log('THEMEPAGE STATE.THEME:', this.props.theme);
           return (
             <Button onPress={this.onButtonPress.bind(this)}>
               GIVE ME A CHALLENGE
             </Button>
           );
         case false:
-          console.log('Im in switch case false in renderButton');
-          console.log('renderButton:', this.state.theme);
+          console.log('THEMEPAGE Im in switch case false in renderButton');
+          console.log('THEMEPAGE STATE.THEME:', this.props.theme);
           return (
                 <View style={{ alignSelf: 'center', flex: 1, paddingBottom: 15, paddingTop: 10 }}>
-                  <Text style={{
-                    alignSelf: 'center',
-                    fontFamily: 'Avenir-Light' }}
+                  <Text
+                    style={{
+                      alignSelf: 'center',
+                      fontFamily: 'Avenir-Light'
+                    }}
                   >
                     YOUR THEME FOR THE WEEK IS
                   </Text>
-                  <Text style={{
-                    paddingTop: 10,
-                    paddingBottom: 20,
-                    alignSelf: 'center',
-                    fontFamily: 'Iowan Old Style',
-                    fontSize: 30,
-                    letterSpacing: 2 }}
-                  >{this.state.theme}</Text>
+                  <Text
+                    style={{
+                      paddingTop: 10,
+                      paddingBottom: 20,
+                      alignSelf: 'center',
+                      fontFamily: 'Iowan Old Style',
+                      fontSize: 30,
+                      letterSpacing: 2 }}
+                  >{this.props.theme}</Text>
                 </View>
           );
         default:
-        console.log('Im in default');
-        console.log('renderButton:', this.state.theme);
+        console.log('THEMEPAGE Im in default');
+        console.log('THEMEPAGE STATE.THEME:', this.props.theme);
           return (<Button onPress={this.onButtonPress.bind(this)}>
             GIVE ME A CHALLENGE
           </Button>);
@@ -71,7 +84,7 @@ class ThemePage extends Component {
     }
 
     renderInspireButton() {
-      switch (this.state.theme !== '') {
+      switch (this.props.theme !== '') {
         case true:
           return (
               <Button>GET INSPIRED</Button>
@@ -82,7 +95,7 @@ class ThemePage extends Component {
     }
 
     renderUploadButton() {
-      switch (this.state.theme !== '') {
+      switch (this.props.theme !== '') {
         case true:
           return (
               <Button onPress={this.onUploadPress.bind(this)}>UPLOAD PHOTO</Button>
@@ -93,24 +106,30 @@ class ThemePage extends Component {
     }
 
     renderCountdown() {
-          switch (this.state.theme !== '') {
+          switch (this.props.theme !== '') {
             case true:
               return (
                   <View style={{ alignSelf: 'center', flex: 1, paddingBottom: 30, paddingTop: 10 }}>
-                    <Text style={{
+                    <Text
+                      style={{
                       alignSelf: 'center',
                       fontFamily: 'Avenir-Light',
                       fontWeight: '100',
                       fontSize: 40,
-                      letterSpacing: 2 }}>
+                      letterSpacing: 2
+                      }}
+                    >
                       7 DAYS
                     </Text>
-                    <Text style={{
+                    <Text
+                      style={{
                       alignSelf: 'center',
                       fontFamily: 'Avenir-Light',
                       fontWeight: '100',
                       fontSize: 15,
-                      letterSpacing: 2 }}>
+                      letterSpacing: 2
+                      }}
+                    >
                       LEFT IN CHALLENGE
                     </Text>
                   </View>
@@ -153,4 +172,11 @@ class ThemePage extends Component {
     }
 }
 
-export default ThemePage;
+const mapStateToProps = ({ auth }) => {
+  const { theme } = auth;
+
+  return { theme };
+};
+
+
+export default connect(mapStateToProps, { themeChanged })(ThemePage);

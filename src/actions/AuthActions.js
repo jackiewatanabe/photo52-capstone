@@ -5,7 +5,8 @@ import {
   PASSWORD_CHANGED,
   LOGIN_USER_SUCCESS,
   LOGIN_USER_FAIL,
-  LOGIN_USER
+  LOGIN_USER,
+  THEME_CHANGED
 } from './types';
 
 export const emailChanged = (text) => {
@@ -20,6 +21,13 @@ export const passwordChanged = (text) => {
       type: PASSWORD_CHANGED,
       payload: text
     };
+};
+
+export const themeChanged = (theme) => {
+  return {
+    type: THEME_CHANGED,
+    payload: theme
+  };
 };
 
 export const loginUser = ({ email, password }) => {

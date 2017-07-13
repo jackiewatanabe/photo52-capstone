@@ -2,10 +2,16 @@ import React, { Component } from 'react';
 import { Text } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import { Card, CardSection, Input, Button } from './common';
+import { Card, CardSection, Button } from './common';
+import { themeChanged } from '../actions';
 // import { photoUpdate, photoCreate } from '../actions';
 
 class ThemeItem extends Component {
+
+  componentWillMount() {
+
+  }
+
   onButtonPress() {
       // const { name, description, category, image_url } = this.props;
 
@@ -15,7 +21,6 @@ class ThemeItem extends Component {
   }
 
   renderButton() {
-
     switch (this.props.theme === '') {
       case true:
         return (
@@ -73,4 +78,11 @@ class ThemeItem extends Component {
 
 }
 
-export default ThemeItem;
+const mapStateToProps = ({ auth }) => {
+  const { user, theme } = auth;
+
+  return { user, theme };
+};
+
+
+export default connect(mapStateToProps, { themeChanged })(ThemeItem);

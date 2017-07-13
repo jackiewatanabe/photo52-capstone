@@ -16,4 +16,6 @@ export const PHOTOS_FETCH_SUCCESS = 'photos_fetch_success';
 
 export const USER_SHOW = 'user_show';
 
-export const THEME_CREATE = 'theme_create';
+export const THEME_CHANGED = 'theme_changed';
+
+export const THEME_CHANGEDO = 'theme_changedo';

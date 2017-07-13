@@ -1,7 +1,7 @@
 import React from 'react';
-import firebase from 'firebase';
-import { ScrollView, Text, View, Image } from 'react-native';
-import { Card, CardSection, Button } from './common';
+// import firebase from 'firebase';
+import { Text, View, Image } from 'react-native';
+import { Card, CardSection } from './common';
 import PhotoList from './PhotoList';
 import ThemeItem from './ThemeItem';
 
@@ -9,7 +9,7 @@ import ThemeItem from './ThemeItem';
 
 
 const UserDetail = (props) => {
-  console.log('props: ', props.user);
+  console.log('Im in USERDETAIL props: ', props.user);
 
   const { user, theme } = props;
 
@@ -50,8 +50,9 @@ const UserDetail = (props) => {
             MY PHOTOROLL
           </Text>
         </CardSection>
-
+        <CardSection>
         <PhotoList />
+        </CardSection>
       </Card>
     </View>
   );

@@ -4,11 +4,14 @@ import { connect } from 'react-redux';
 // import axios from 'axios';
 import UserDetail from './UserDetail';
 import { loginUser } from '../actions';
-// import { Header } from './common';
 
 
 class UserPage extends Component {
-  state = { theme: this.props.theme, user: this.props.user };
+  // state = { theme: this.props.theme, user: this.props.user };
+
+  componentWillMount() {
+
+  }
 
   render() {
     console.log('state: ', this.state);
@@ -16,7 +19,7 @@ class UserPage extends Component {
 
     return (
       <View>
-        <UserDetail user={this.state.user} theme={this.state.theme}/>
+        <UserDetail user={this.props.user} theme={this.props.theme} />
       </View>
     );
   }
@@ -24,9 +27,9 @@ class UserPage extends Component {
 }
 
 const mapStateToProps = ({ auth }) => {
-  const { email, password, error, loading, user, theme } = auth;
+  const { email, error, loading, user, theme } = auth;
 
-  return { email, password, error, loading, user, theme };
+  return { email, error, loading, user, theme };
 };
 
 export default connect(mapStateToProps, { loginUser })(UserPage);

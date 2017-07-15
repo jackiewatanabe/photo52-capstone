@@ -24,15 +24,17 @@ const styles = {
     color: '#000',
     paddingRight: 5,
     paddingLeft: 5,
-    fontSize: 18,
+    fontSize: 15,
     lineHeight: 23,
-    flex: 2
+    flex: 2,
+    fontFamily: 'Iowan Old Style'
   },
   labelStyle: {
-    fontSize: 18,
+    fontSize: 15,
     paddingLeft: 20,
-    flex: 1
-  },
+    flex: 1,
+    fontFamily: 'Avenir-Light'
+    },
   containerStyle: {
     height: 40,
     flex: 1,

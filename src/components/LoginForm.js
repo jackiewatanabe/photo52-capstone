@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
+import { View, Text, CameraRoll } from 'react-native';
 import { connect } from 'react-redux';
 import { Card, CardSection, Input, Button, Spinner } from './common';
 import { emailChanged, passwordChanged, loginUser } from '../actions';
 
 
 class LoginForm extends Component {
+  // constructor() {
+  //   super();
+  //   console.warn(Object.keys(CameraRoll));
+  // }
+
     onEmailChange(text) {
       this.props.emailChanged(text);
     }
@@ -34,9 +39,23 @@ class LoginForm extends Component {
     render() {
       return (
         <Card>
+          <CardSection style={{ paddingTop: 30, paddingBottom: 30, alignSelf: 'center', width: 250 }}>
+            <View style={{ flex: 1, alignSelf: 'center' }}>
+              <Text style={{ fontFamily: 'Iowan Old Style', textAlign: 'center', fontStyle: 'italic', fontSize: 18 }}>
+                Becoming a better photographer begins with taking more pictures. Push yourself to try new techniques with just one image a week.
+              </Text>
+            </View>
+          </CardSection>
+          <CardSection>
+            <View style={{ flex: 1, alignSelf: 'center', paddingBottom: 20 }}>
+              <Text style={{ fontFamily: 'Avenir-Light', textAlign: 'center', fontSize: 20, letterSpacing: 3 }}>
+                START YOUR PHOTO52 CHALLENGE TODAY!
+              </Text>
+            </View>
+          </CardSection>
           <CardSection>
             <Input
-              label="Email"
+              label="EMAIL"
               placeholder="email@gmail.com"
               onChangeText={this.onEmailChange.bind(this)}
               value={this.props.email}
@@ -46,7 +65,7 @@ class LoginForm extends Component {
             <Input
               secureTextEntry
               placeholder="password"
-              label="Password"
+              label="PASSWORD"
               onChangeText={this.onPasswordChange.bind(this)}
               value={this.props.password}
             />

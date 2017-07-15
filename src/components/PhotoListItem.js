@@ -24,6 +24,6 @@ const styles = {
     width: 350,
     alignSelf: 'stretch'
   }
-}
+};
 
 export default PhotoListItem;

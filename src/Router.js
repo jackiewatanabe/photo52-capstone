@@ -6,14 +6,19 @@ import UserPage from './components/UserPage';
 import PhotoCreate from './components/PhotoCreate';
 import ThemePage from './components/ThemePage';
 import InspirationPage from './components/InspirationPage';
+import Example from './components/Example';
+// import CameraRolls from './components/CameraRolls';
+// import ImageBrowser from './components/ImageBrowser';
 
 const RouterComponent = () => {
   return (
     <Router sceneStyle={{ paddingTop: 65 }}>
-      <Scene key="auth">
-        <Scene key="login" component={LoginForm} title="Please Log In" initial />
+      <Scene key="auth"
+        navigationBarStyle={styles.navigationBar} titleStyle={styles.navbarTitle}
+      >
+        <Scene key="login" component={LoginForm} title="PHOTO52" initial />
       </Scene>
-      <Scene key="main">
+      <Scene key="main" navigationBarStyle={styles.navigationBar} titleStyle={styles.navbarTitle}>
         <Scene
         key="userPage"
         component={UserPage}
@@ -30,7 +35,7 @@ const RouterComponent = () => {
           rightTitle="+"
         />
         <Scene
-          key="themePage" component={ThemePage} title="Theme Page"
+          key="themePage" component={ThemePage} title="THEME PAGE"
           onLeft={() => Actions.userPage()}
           leftTitle="User Page"
           onRight={() => Actions.photoCreate()}
@@ -43,9 +48,25 @@ const RouterComponent = () => {
           onRight={() => Actions.photoCreate()}
           rightTitle="+"
         />
+        <Scene
+          key="example" component={Example}
+          title="Example"
+        />
       </Scene>
     </Router>
   );
+};
+
+const styles = {
+  navigationBar: {
+    backgroundColor: 'black',
+    // color: 'white'
+  },
+  navbarTitle: {
+    color: 'white',
+    fontFamily: 'Avenir-Light',
+    letterSpacing: 2
+  }
 };
 
 export default RouterComponent;

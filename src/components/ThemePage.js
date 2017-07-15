@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, LayoutAnimation } from 'react-native';
 // import axios from 'axios';
 // import UserDetail from './UserDetail';
 import { connect } from 'react-redux';
@@ -12,6 +12,7 @@ class ThemePage extends Component {
     // state = { theme: this.props.theme };
 
     componentWillMount() {
+      LayoutAnimation.spring();
       // this.setState(this.props.themeChanged('asdf'));
     }
 
@@ -28,7 +29,7 @@ class ThemePage extends Component {
 
     onButtonPress() {
 
-      const myThemes = ['BLACK AND WHITE', 'LEADING LINES', 'CIRCLES', 'WEEE!!!', 'COFFEE', 'MORNING', 'LONG EXPOSURE', 'NIGHT SKY', 'PORTRAIT OF A STRANGER', 'WATER', 'SELF-PORTRAIT', 'SILHOUTTE', 'MOVEMENT', 'MESSY', 'WEATHER', 'TRANSPORTATION', 'BLUE', 'RED', 'COLORS', 'MINIMALISM', 'BOKEH', 'SOLITUDE', 'GET HIGH', 'GET LOW', 'FASHION', 'TRENDY', 'STREET CANDID', 'FOOD', 'SYMMETRY', 'ASYMMETRY'];
+      const myThemes = ['BLACK AND WHITE', 'LEADING LINES', 'CIRCLES', 'WEEE!!!', 'COFFEE', 'MORNING', 'LONG EXPOSURE', 'NIGHT SKY', 'PORTRAIT OF A STRANGER', 'WATER', 'SELF-PORTRAIT', 'SILHOUTTE', 'MOVEMENT', 'MESSY', 'WEATHER', 'TRANSPORTATION', 'BLUE', 'RED', 'COLORS', 'MINIMALISM', 'BOKEH', 'SOLITUDE', 'GET HIGH', 'GET LOW', 'FASHION', 'TRENDY', 'STREET CANDID', 'FOOD', 'SYMMETRY', 'WABISABI', 'MUSIC', 'TEXTURE', 'CLOSE-UP', 'LIGHT PAINTING', 'BUSINESS', 'FORMAL', 'FAVORITE', 'MID-DAY', 'FEET', 'HANDS', 'SHADOWS', 'ANGLES', 'GROWTH', 'SOFT', 'FRIENDSHIP', 'FURRY FRIENDS', 'DISTANCE', 'NOSTALGIA', 'BLUR'];
       const rand = myThemes[Math.floor(Math.random() * myThemes.length)];
       // const { theme } = this.state;
       // this.setState({ theme: 'WEEEEE' });
@@ -74,6 +75,7 @@ class ThemePage extends Component {
                     style={{
                       paddingTop: 10,
                       paddingBottom: 20,
+                      textAlign: 'center',
                       alignSelf: 'center',
                       fontFamily: 'Iowan Old Style',
                       fontSize: 30,
@@ -94,7 +96,7 @@ class ThemePage extends Component {
       switch (this.props.theme !== '') {
         case true:
           return (
-              <Button onPress={this.onInspirationPress.bind(this)}>GET INSPIRED</Button>
+              <Button onPress={this.onInspirationPress.bind(this)} style={{ width: 300 }}>GET INSPIRED</Button>
           );
         case false: break;
         default: break;

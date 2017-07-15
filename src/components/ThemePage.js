@@ -12,7 +12,7 @@ class ThemePage extends Component {
     // state = { theme: this.props.theme };
 
     componentWillMount() {
-      LayoutAnimation.spring();
+      LayoutAnimation.easeInEaseOut();
       // this.setState(this.props.themeChanged('asdf'));
     }
 

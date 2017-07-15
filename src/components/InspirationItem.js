@@ -17,7 +17,8 @@ class InspirationItem extends Component {
 
     return (
       <CardSection>
-      <View style={{ flex: 1, alignSelf: 'center' }}>
+      <View style={{ flex: 1, alignSelf: 'center', backgroundColor: '#ffffff',
+      opacity: 0.5 }}>
         <Text style={styles.resultDetailText}>CAMERA: {photo.camera} </Text>
         <Text style={styles.resultDetailText}>LENS: {photo.lens}</Text>
         <Text style={styles.resultDetailText}>ISO: {photo.iso}</Text>
@@ -37,9 +38,10 @@ class InspirationItem extends Component {
       <TouchableWithoutFeedback onPress={() => this.props.selectResultPhoto(id) }>
       <View>
       <CardSection style={{ alignSelf: 'center', paddingTop: 0, paddingBottom: 0 }}>
-          <Image style={styles.imageStyle} source={{ uri: `${image_url}` }} />
+          <Image style={styles.imageStyle} source={{ uri: `${image_url}` }}>{this.renderDescription()}
+          </Image>
       </CardSection>
-      {this.renderDescription()}
+
       </View>
       </TouchableWithoutFeedback>
     );
@@ -52,16 +54,27 @@ const styles = {
     paddingLeft: 15
   },
   imageStyle: {
-    height: 200,
+    // height: 200,
+    // width: 350,
+    alignSelf: 'stretch',
+    // flex: 1,
     width: 350,
-    alignSelf: 'stretch'
+    height: 200,
+    backgroundColor: 'transparent',
+    justifyContent: 'center',
+    // alignItems: 'center',
   },
   resultDetailText: {
-    alignSelf: 'center',
+    alignSelf: 'stretch',
     textAlign: 'center',
     fontFamily: 'Avenir-Light',
     fontSize: 12,
-    letterSpacing: 1
+    letterSpacing: 1,
+    color: 'black'
+  },
+  resultDetail: {
+    backgroundColor: 'white',
+    opacity: 0.5
   }
 };
 

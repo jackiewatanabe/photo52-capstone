@@ -13,17 +13,54 @@ class InspirationItem extends Component {
   renderDescription() {
   const { photo, expanded } = this.props;
 
+  // const { camera, lens, iso, shutter_speed, aperture } = this.props.photo;
+
+  let camera = photo.camera;
+  let lens = photo.lens;
+  let iso = photo.iso;
+  let shutter_speed = photo.shutter_speed;
+  let aperture = photo.aperture;
+
+  console.log('camera: ', camera);
+  console.log('lens: ', lens);
+  // if (camera === '' || camera == null) {
+  //   camera = 'n/a';
+  // }
+  // if (lens === '' || lens == null) {
+  //   lens = 'n/a';
+  // }
+  // if (iso === '' || iso == null) {
+  //   iso = 'n/a';
+  // }
+  // if (shutter_speed === '' || shutter_speed == null) {
+  //   shutter_speed = 'n/a';
+  // }
+  // if (aperture === '' || aperture == null) {
+  //   aperture = 'n/a';
+  // }
+
   if (expanded) {
 
     return (
-      <CardSection>
-      <View style={{ flex: 1, alignSelf: 'center', backgroundColor: '#ffffff',
-      opacity: 0.5 }}>
-        <Text style={styles.resultDetailText}>CAMERA: {photo.camera} </Text>
-        <Text style={styles.resultDetailText}>LENS: {photo.lens}</Text>
-        <Text style={styles.resultDetailText}>ISO: {photo.iso}</Text>
-        <Text style={styles.resultDetailText}>SHUTTER SPEED: {photo.shutter_speed}</Text>
-        <Text style={styles.resultDetailText}>APERTURE: {photo.aperture}</Text>
+      <CardSection style={styles.resultDetail}>
+        <View style={{ flex: 1, alignSelf: 'center', flexDirection: 'row'}}>
+          <View style={{ flex: 2.7, flexDirection: 'column' }}>
+            <Text style={styles.resultDetailTextLabel}>CAMERA:  </Text>
+            <Text style={styles.resultDetailTextLabel}>LENS:
+            </Text>
+            <Text style={styles.resultDetailTextLabel}>ISO: </Text>
+            <Text style={styles.resultDetailTextLabel}>SHUTTER SPEED: </Text>
+            <Text style={styles.resultDetailTextLabel}>APERTURE: </Text>
+          </View>
+          <View style={{ flex: 3, flexDirection: 'column'}}>
+            <Text style={styles.resultDetailText}>{camera ? camera : 'n/a'}</Text>
+            <Text style={styles.resultDetailText}>{lens ? lens : 'n/a'}</Text>
+            <Text style={styles.resultDetailText}>{iso ? iso : 'n/a'}</Text>
+            <Text style={styles.resultDetailText}>{shutter_speed ? shutter_speed : 'n/a'}</Text>
+            <Text style={styles.resultDetailText}>
+            {aperture ? aperture : 'n/a'}
+            </Text>
+          </View>
         </View>
       </CardSection>
     );
@@ -64,18 +101,42 @@ const styles = {
     justifyContent: 'center',
     // alignItems: 'center',
   },
-  resultDetailText: {
-    alignSelf: 'stretch',
-    textAlign: 'center',
+  resultDetailTextLabel: {
+    // alignSelf: 'flex-start',
+    textAlign: 'right',
     fontFamily: 'Avenir-Light',
     fontSize: 12,
     letterSpacing: 1,
-    color: 'black'
+    color: 'white',
+    opacity: 1,
+    fontWeight: '400',
+    paddingRight: 3
   },
   resultDetail: {
-    backgroundColor: 'white',
-    opacity: 0.5
+    backgroundColor: 'rgba(0, 0, 0, .7)',
+    // opacity: 0.5,
+    flex: 1,
+    alignSelf: 'stretch',
+    // backgroundColor: '#ffffff',
+    // opacity: 0.5
+  },
+  resultDetailTextLine: {
+    flexDirection: 'row',
+    // alignSelf: 'center',
+    // flex: 1
+  },
+  resultDetailText: {
+    alignSelf: 'stretch',
+    // textAlign: 'left',
+    fontFamily: 'Iowan Old Style',
+    fontStyle: 'italic',
+    fontSize: 12,
+    letterSpacing: 1,
+    color: 'white',
+    opacity: 1,
+    fontWeight: '400'
   }
+
 };
 
 const mapStateToProps = (state, ownProps) => {

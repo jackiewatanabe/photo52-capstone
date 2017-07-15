@@ -42,7 +42,7 @@ const RouterComponent = () => {
           rightTitle="+"
         />
         <Scene
-          key="inspirationPage" component={InspirationPage} title="Inspiration Page"
+          key="inspirationPage" component={InspirationPage} title="INSPIRATION PAGE"
           onLeft={() => Actions.userPage()}
           leftTitle="User Page"
           onRight={() => Actions.photoCreate()}

@@ -60,6 +60,8 @@ const RouterComponent = () => {
         <Scene
           key="photoList" component={PhotoList}
           title="PHOTOROLL"
+          onLeft={() => Actions.userPage()}
+          leftTitle="User Page"
         />
         <Scene
           key="inspirationChoice" component={InspirationChoice}

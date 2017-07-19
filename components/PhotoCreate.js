@@ -71,7 +71,7 @@ class PhotoCreate extends Component {
   }
 
   render() {
-    console.log('this.props.image_url: ', this.props.image_url);
+    console.log('this.props.upload_image_url type: ', typeof this.props.upload_image_url);
     return (
       <Card>
       <CardSection style={styles.container}>

@@ -9,14 +9,20 @@ import firebase from 'firebase';
 import RNFetchBlob from 'react-native-fetch-blob';
 import CameraRollPicker from 'react-native-camera-roll-picker';
 import { Actions } from 'react-native-router-flux';
+import { connect } from 'react-redux';
+import * as actions from '../actions';
 
-export default class Gallery extends Component {
-  state = { image_url: null }
+class Gallery extends Component {
+  // state = { image_url: null }
 
   getSelectedImages = (selectedImages, currentImage) => {
 
-    const image = currentImage.uri
+    const image = currentImage.uri;
 
+    const { uid }= this.props.user;
+
+    console.log('currentImage in getSelectedImages', currentImage);
+    console.log('props in getSlected Images: ', this.props);
     const Blob = RNFetchBlob.polyfill.Blob
     const fs = RNFetchBlob.fs
     window.XMLHttpRequest = RNFetchBlob.polyfill.XMLHttpRequest
@@ -24,7 +30,7 @@ export default class Gallery extends Component {
 
 
     let uploadBlob = null
-    const imageRef = firebase.storage().ref('images').child("test.jpg")
+    const imageRef = firebase.storage().ref('user').child(`${uid}`).child(`images`).child(`${currentImage.filename}`);
     let mime = 'image/jpg'
     fs.readFile(image, 'base64')
       .then((data) => {
@@ -41,9 +47,10 @@ export default class Gallery extends Component {
       .then((url) => {
         // URL of the image uploaded on Firebase storage
         console.log(url);
-        this.setState({ image_url: url });
-        console.log("this.state.image_url: ", this.state.image_url);
-        Actions.photoCreate({ image_url: url });
+
+        console.log("this.props.upload_image_url: ", this.props.image_url);
+        this.props.photoUpdate({ prop: 'image_url', value: url });
+        Actions.photoCreate();
 
       })
       .catch((error) => {
@@ -100,3 +107,14 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
 });
+
+const mapStateToProps = (state, ownProps) => {
+  console.log('mapstatetoprops state.photoForm: ', state.photoForm);
+  const { user } = state.auth;
+  const { image_url } = state.photoForm;
+  // const expanded = state.selectedResultPhotoId === ownProps.photo.id;
+
+  return { image_url, user };
+};
+
+export default connect(mapStateToProps, actions)(Gallery);

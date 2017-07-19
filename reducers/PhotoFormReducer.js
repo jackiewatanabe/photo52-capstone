@@ -7,7 +7,8 @@ import {
 const INITIAL_STATE = {
   name: '',
   description: '',
-  category: ''
+  category: '',
+  image_url: ''
 };
 
 export default (state = INITIAL_STATE, action) => {

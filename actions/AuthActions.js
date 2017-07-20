@@ -51,6 +51,7 @@ export const loginUserFail = (dispatch) => {
 };
 
 export const loginUserSuccess = (dispatch, user) => {
+  console.log('USER!! ', user);
   dispatch({
     type: LOGIN_USER_SUCCESS,
     payload: user
@@ -73,8 +74,9 @@ export const challengeCreate = (theme) => {
   return (dispatch) => {
     firebase.database().ref(`/users/${currentUser.uid}/challenges`)
     .push({ theme, start_date: dateTime })
-    .then(() => {
-      dispatch({ type: CHALLENGE_CREATE, payload: theme });
+    .then(challenge => {
+      console.log('CHALLENGE!! ', challenge);
+      dispatch({ type: CHALLENGE_CREATE, payload: challenge.path.o[3] });
       Actions.themePage();
     });
   };

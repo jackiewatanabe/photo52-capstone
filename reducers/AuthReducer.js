@@ -8,7 +8,7 @@ import {
   // THEME_CHANGED
 } from '../actions/types';
 
-const INITIAL_STATE = { email: '', password: '', user: null, error: '', loading: false, theme: null };
+const INITIAL_STATE = { email: '', password: '', user: null, error: '', loading: false, challenge: null };
 
 export default (state = INITIAL_STATE, action) => {
     console.log(action);
@@ -34,7 +34,7 @@ export default (state = INITIAL_STATE, action) => {
         return { ...state, error: 'Authentication Failed', loading: false, password: '' };
       case CHALLENGE_CREATE:
         console.log('action.payload: ', action.payload);
-        return { ...state, theme: action.payload };
+        return { ...state, challenge: action.payload.theme };
       default:
         return state;
     }

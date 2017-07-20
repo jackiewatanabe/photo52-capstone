@@ -13,15 +13,15 @@ export const photoUpdate = ({ prop, value }) => {
   };
 };
 
-export const photoCreate = ({ name, description, category, image_url }) => {
+export const photoCreate = (theme) => {
   const { currentUser } = firebase.auth();
 
   return (dispatch) => {
     firebase.database().ref(`/users/${currentUser.uid}/photos`)
-    .push({ name, description, category, image_url })
+    .push({ theme, image_url: null })
     .then(() => {
       dispatch({ type: PHOTO_CREATE });
-      Actions.photoList({ type: 'reset' });
+      // Actions.photoList({ type: 'reset' });
     });
   };
 };

@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { Card, CardSection, Button } from './common';
 // import { themeChanged } from '../actions';
-import { challengeCreate } from '../actions';
+import { challengeCreate, photoCreate } from '../actions';
 
 class ThemePage extends Component {
     // state = { theme: this.props.theme };
@@ -35,6 +35,11 @@ class ThemePage extends Component {
       // console.log('onButtonPress-before themeChanged: ', this.props.theme);
       this.props.challengeCreate(rand);
       console.log('onButtonPress:', this.props.theme);
+
+
+      // const { name, description, category, image_url } = this.props;
+
+      // this.props.photoCreate(rand);
       // ;
       // return <Text>BLACK AND WHITE</Text>;
     }
@@ -222,7 +227,7 @@ class ThemePage extends Component {
 }
 
 const styles = {
-  
+
 };
 const mapStateToProps = ({ auth }) => {
   const { theme } = auth;
@@ -232,4 +237,4 @@ const mapStateToProps = ({ auth }) => {
 };
 
 
-export default connect(mapStateToProps, { challengeCreate })(ThemePage);
+export default connect(mapStateToProps, { challengeCreate, photoCreate })(ThemePage);

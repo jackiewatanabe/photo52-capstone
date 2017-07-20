@@ -38,7 +38,7 @@ class ThemeItem extends Component {
             onPress={this.onButtonPress.bind(this)}
             style={{ flex: 1 }}
           >
-            {this.props.theme}
+            {this.props.challenge.theme}
           </Button>
       );
       default:

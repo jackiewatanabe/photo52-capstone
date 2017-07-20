@@ -143,21 +143,24 @@ class InspirationPage extends Component {
 const mapStateToProps = state => {
   // console.log('mapstate to props: themes.photos: ', state);
     const { theme } = state.auth.challenge;
+
+    console.log('Inspiration Page theme: ', theme);
     const photos = _.map(state.themes.photos, (val, uid) => {
       return { ...val, uid };
     });
-
+    console.log('Inspiration Page state.themes.photos: ', photos);
     const unsplashPhotos = _.map(state.unsplashPhotos.results, (val, uid) => {
       return { ...val, uid };
     });
+    console.log('Inspiration Page state.unsplashPhotos.results: ', unsplashPhotos);
 
-    const flickrPhotos = _.map(state.flickrPhotos.photos, (val, uid) => {
-      return { ...val, uid };
-    });
+    // const flickrPhotos = _.map(state.flickrPhotos.photos, (val, uid) => {
+    //   return { ...val, uid };
+    // });
       console.log('photos mapStateToProps: ', photos);
       console.log('unsplashPhotos mapStateToProps: ', unsplashPhotos);
 
-    return { photos, unsplashPhotos, flickrPhotos, theme };
+    return { photos, unsplashPhotos, theme };
   };
 
 export default connect(mapStateToProps, { searchPhotosFetch, searchFlickrFetch, searchUnsplashFetch })(InspirationPage);

@@ -8,7 +8,7 @@ class PhotoListItem extends Component {
 
     return (
       <CardSection style={{ paddingTop: 0, paddingBottom: 0 }}>
-          <Image style={styles.imageStyle} source={{ uri: `${image_url}` }} />
+        { image_url ? (<Image style={styles.imageStyle} source={{ uri: `${image_url}` }} />) : null }
       </CardSection>
     );
   }

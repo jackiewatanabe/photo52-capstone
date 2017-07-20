@@ -36,7 +36,7 @@ export const challengeSave = ({ theme, start_date, image_url, challenge_uid }) =
     .set({ theme, start_date, image_url, complete: true })
     .then(() => {
       dispatch({ type: CHALLENGE_SAVE });
-      // Actions.photoList({ type: 'reset' });
+      Actions.photoList({ type: 'reset' });
     });
   };
 };
@@ -45,7 +45,7 @@ export const photosFetch = () => {
   const { currentUser } = firebase.auth();
 
   return (dispatch) => {
-    firebase.database().ref(`/users/${currentUser.uid}/photos`)
+    firebase.database().ref(`/users/${currentUser.uid}/challenges`)
       .on('value', snapshot => {
         dispatch({ type: PHOTOS_FETCH_SUCCESS, payload: snapshot.val() });
       });

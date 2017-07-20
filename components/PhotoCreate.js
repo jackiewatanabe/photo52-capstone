@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 // import CameraRollPicker from 'react-native-camera-roll-picker';
 import RNFetchBlob from 'react-native-fetch-blob';
 import { Card, CardSection, Input, Button } from './common';
-import { photoUpdate, photoCreate } from '../actions';
+import { photoUpdate, photoCreate, challengeSave } from '../actions';
 
 // import Share from 'react-native-share';
 
@@ -45,10 +45,10 @@ class PhotoCreate extends Component {
     }
 
   onButtonPress() {
-    const { name, description, category, image_url } = this.props;
+    const { theme, start_date } = this.props.challenge;
+    const { challenge_uid, image_url } = this.props;
 
-    this.props.photoCreate({
-      name, description, category: category || 'uncategorized', image_url });
+    this.props.challengeSave({ theme, image_url, challenge_uid, start_date });
   }
 
   onChooseButtonPress() {
@@ -129,20 +129,11 @@ class PhotoCreate extends Component {
       </CardSection>
         <CardSection>
           <Input
-            label="Name"
+            label="Theme"
             placeholder="Enter image name here"
-            value={this.props.name}
-            onChangeText={text => this.props.photoUpdate({ prop: 'name', value: text })}
+            value={this.props.challenge.theme}
+            onChangeText={text => this.props.photoUpdate({ prop: 'theme', value: text })}
           />
-        </CardSection>
-
-        <CardSection>
-        <Input
-          label="Description"
-          placeholder="Enter description here"
-          value={this.props.description}
-          onChangeText={text => this.props.photoUpdate({ prop: 'description', value: text })}
-        />
         </CardSection>
 
         <CardSection>
@@ -278,9 +269,9 @@ styles = StyleSheet.create({
 // };
 
 const mapStateToProps = (state) => {
-  const { name, description, category, image_url } = state.photoForm;
-
-  return { name, description, category, image_url };
+  const { image_url } = state.photoForm;
+  const { challenge, challenge_ref, challenge_uid } = state.auth;
+  return { challenge, challenge_ref, challenge_uid, image_url };
 };
 
-export default connect(mapStateToProps, { photoUpdate, photoCreate })(PhotoCreate);
+export default connect(mapStateToProps, { photoUpdate, photoCreate, challengeSave })(PhotoCreate);

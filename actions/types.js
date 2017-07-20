@@ -31,3 +31,5 @@ export const SEARCH_UNSPLASH_FETCH_SUCCESS =
 export const CHALLENGE_CREATE = 'challenge_create';
 
 export const CHALLENGE_FETCH_SUCCESS = 'challenge_fetch_success';
+
+export const CHALLENGE_SAVE = 'challenge_save';

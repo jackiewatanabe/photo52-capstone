@@ -1,14 +1,12 @@
 import {
   PHOTO_UPDATE,
   PHOTO_CREATE,
-  THEME_CHANGEDO
+  CHALLENGE_SAVE
 } from '../actions/types';
 
 const INITIAL_STATE = {
-  name: '',
-  description: '',
-  category: '',
-  image_url: ''
+  theme: null,
+  image_url: null
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -16,9 +14,10 @@ export default (state = INITIAL_STATE, action) => {
     case PHOTO_UPDATE:
       return { ...state, [action.payload.prop]: action.payload.value };
     case PHOTO_CREATE:
-      return INITIAL_STATE;
-    case THEME_CHANGEDO:
       return { ...state, theme: action.payload };
+      // return INITIAL_STATE;
+    case CHALLENGE_SAVE:
+      return { ...state, ...INITIAL_STATE };
     default:
       return state;
   }

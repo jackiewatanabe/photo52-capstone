@@ -80,7 +80,8 @@ export const challengeCreate = (theme) => {
         dispatch({ type: CHALLENGE_CREATE,
                    payload: {
                     challenge: challengeSnapshot.val(),
-                    ref: challenge
+                    ref: challenge,
+                    uid: challenge.path.o[3]
                    }
                  });
         //.then(dispatch({ type: FIND_CHALLENGE }))

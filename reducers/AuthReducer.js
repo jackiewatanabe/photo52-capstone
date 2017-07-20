@@ -34,7 +34,7 @@ export default (state = INITIAL_STATE, action) => {
         return { ...state, error: 'Authentication Failed', loading: false, password: '' };
       case CHALLENGE_CREATE:
         console.log('action.payload: ', action.payload);
-        return { ...state, challenge: action.payload.challenge, challenge_ref: action.payload.ref };
+        return { ...state, challenge: action.payload.challenge, challenge_ref: action.payload.ref, challenge_uid: action.payload.uid };
       default:
         return state;
     }

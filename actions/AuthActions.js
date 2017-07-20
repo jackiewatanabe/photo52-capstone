@@ -76,8 +76,17 @@ export const challengeCreate = (theme) => {
     .push({ theme, start_date: dateTime })
     .then(challenge => {
       console.log('CHALLENGE!! ', challenge);
-      dispatch({ type: CHALLENGE_CREATE, payload: challenge.path.o[3] });
-      Actions.themePage();
+      challenge.once('value', challengeSnapshot => {
+        dispatch({ type: CHALLENGE_CREATE,
+                   payload: {
+                    challenge: challengeSnapshot.val(),
+                    ref: challenge
+                   }
+                 });
+        //.then(dispatch({ type: FIND_CHALLENGE }))
+        Actions.themePage();
+      })
+
     });
   };
 };

@@ -61,7 +61,7 @@ class ThemePage extends Component {
     }
 
     renderChallengeButton() {
-      switch (this.props.theme === null) {
+      switch (this.props.challenge === null) {
         case true:
           console.log('THEMEPAGE Im in switch case true in renderButton');
           console.log('THEMEPAGE STATE.THEME:', this.props.theme);
@@ -72,7 +72,7 @@ class ThemePage extends Component {
           );
         case false:
           console.log('THEMEPAGE Im in switch case false in renderButton');
-          console.log('THEMEPAGE STATE.THEME:', this.props.theme);
+          console.log('THEMEPAGE STATE.THEME:', this.props);
           return (
                 <View style={{ alignSelf: 'center', flex: 1, paddingBottom: 15, paddingTop: 10 }}>
                   <Text
@@ -92,12 +92,12 @@ class ThemePage extends Component {
                       fontFamily: 'Iowan Old Style',
                       fontSize: 30,
                       letterSpacing: 2 }}
-                  >{this.props.theme}</Text>
+                  >{this.props.challenge.theme}</Text>
                 </View>
           );
         default:
         console.log('THEMEPAGE Im in default');
-        console.log('THEMEPAGE STATE.THEME:', this.props.theme);
+        console.log('THEMEPAGE STATE.THEME:', this.props.challenge);
           return (<Button onPress={this.onButtonPress.bind(this)}>
             GIVE ME A CHALLENGE
           </Button>);
@@ -105,7 +105,7 @@ class ThemePage extends Component {
     }
 
     renderInspireButton() {
-      switch (this.props.theme !== null) {
+      switch (this.props.challenge !== null) {
         case true:
           return (
               <Button
@@ -133,7 +133,7 @@ class ThemePage extends Component {
 
 
     renderUploadButton() {
-      switch (this.props.theme !== null) {
+      switch (this.props.challenge !== null) {
         case true:
           return (
               <Button onPress={this.onUploadPress.bind(this)}>UPLOAD PHOTO</Button>
@@ -156,7 +156,7 @@ class ThemePage extends Component {
     // }
 
     renderCountdown() {
-          switch (this.props.theme !== null) {
+          switch (this.props.challenge !== null) {
             case true:
               return (
                   <View style={{ alignSelf: 'center', flex: 1, paddingBottom: 30, paddingTop: 10 }}>
@@ -230,10 +230,10 @@ const styles = {
 
 };
 const mapStateToProps = ({ auth }) => {
-  const { theme } = auth;
+  const { challenge } = auth;
   const expanded = false;
 
-  return { theme, expanded };
+  return { challenge, expanded };
 };
 
 

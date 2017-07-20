@@ -142,7 +142,7 @@ class InspirationPage extends Component {
 
 const mapStateToProps = state => {
   // console.log('mapstate to props: themes.photos: ', state);
-    const theme = state.auth.theme;
+    const { theme } = state.auth.challenge;
     const photos = _.map(state.themes.photos, (val, uid) => {
       return { ...val, uid };
     });

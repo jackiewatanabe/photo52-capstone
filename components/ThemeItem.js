@@ -21,7 +21,7 @@ class ThemeItem extends Component {
   }
 
   renderButton() {
-    switch (this.props.theme === null) {
+    switch (this.props.challenge === null) {
       case true:
         return (
           <Button
@@ -79,9 +79,9 @@ class ThemeItem extends Component {
 }
 
 const mapStateToProps = ({ auth }) => {
-  const { user, theme } = auth;
+  const { user, challenge } = auth;
 
-  return { user, theme };
+  return { user, challenge };
 };
 
 

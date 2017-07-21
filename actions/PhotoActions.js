@@ -36,7 +36,7 @@ export const challengeSave = ({ theme, start_date, image_url, challenge_uid }) =
     .set({ theme, start_date, image_url, complete: true })
     .then(() => {
       dispatch({ type: CHALLENGE_SAVE });
-      Actions.photoList({ type: 'reset' });
+      Actions.challengeCreate({ type: 'reset' });
     });
   };
 };

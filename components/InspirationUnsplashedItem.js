@@ -23,24 +23,8 @@ class InspirationUnsplashedItem extends Component {
 
   console.log('camera: ', camera);
   console.log('lens: ', lens);
-  // if (camera === '' || camera == null) {
-  //   camera = 'n/a';
-  // }
-  // if (lens === '' || lens == null) {
-  //   lens = 'n/a';
-  // }
-  // if (iso === '' || iso == null) {
-  //   iso = 'n/a';
-  // }
-  // if (shutter_speed === '' || shutter_speed == null) {
-  //   shutter_speed = 'n/a';
-  // }
-  // if (aperture === '' || aperture == null) {
-  //   aperture = 'n/a';
-  // }
 
   if (expanded) {
-
     return (
       <CardSection style={styles.resultDetail}>
         <View style={{ flex: 1, alignSelf: 'center', flexDirection: 'row' }}>

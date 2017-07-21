@@ -6,7 +6,6 @@ import { photosFetch } from '../actions';
 import PhotoListItem from './PhotoListItem';
 
 class PhotoList extends Component {
-  // const { listStyle } = styles;
 
   componentWillMount() {
     this.props.photosFetch();

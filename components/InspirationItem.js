@@ -28,21 +28,6 @@ class InspirationItem extends Component {
 
   console.log('camera: ', camera);
   console.log('lens: ', lens);
-  // if (camera === '' || camera == null) {
-  //   camera = 'n/a';
-  // }
-  // if (lens === '' || lens == null) {
-  //   lens = 'n/a';
-  // }
-  // if (iso === '' || iso == null) {
-  //   iso = 'n/a';
-  // }
-  // if (shutter_speed === '' || shutter_speed == null) {
-  //   shutter_speed = 'n/a';
-  // }
-  // if (aperture === '' || aperture == null) {
-  //   aperture = 'n/a';
-  // }
 
   if (expanded) {
 
@@ -145,8 +130,6 @@ const styles = {
 };
 
 const mapStateToProps = (state, ownProps) => {
-  console.log('mapstatetoprops: ', ownProps.photos);
-  console.log('mapstatetoprops state: ', state);
   const expanded = state.selectedResultPhotoId === ownProps.photo.id;
 
   return { expanded };

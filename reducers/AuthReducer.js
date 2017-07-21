@@ -4,8 +4,8 @@ import {
   LOGIN_USER_SUCCESS,
   LOGIN_USER_FAIL,
   LOGIN_USER,
-  CHALLENGE_CREATE
-  // THEME_CHANGED
+  CHALLENGE_CREATE,
+  REHYDRATE
 } from '../actions/types';
 
 const INITIAL_STATE = { email: '', password: '', user: null, error: '', loading: false, challenge: null };
@@ -14,6 +14,9 @@ export default (state = INITIAL_STATE, action) => {
     console.log(action);
 
     switch (action.type) {
+      case REHYDRATE:
+        console.log('IN REHYDRATE: ', action.payload.challenger);
+        return action.payload.auth || [];
       case EMAIL_CHANGED:
         return { ...state, email: action.payload };
       case PASSWORD_CHANGED:
@@ -24,7 +27,7 @@ export default (state = INITIAL_STATE, action) => {
       case LOGIN_USER_SUCCESS:
       console.log('in LOGIN_USER_SUCCESS in authreducer: ', action.payload);
         return {
-          ...state, ...INITIAL_STATE, user: action.payload
+          ...state, error: '', loading: false, email: '', password: '', user: action.payload
         };
         // error: '',
         // loading: false,

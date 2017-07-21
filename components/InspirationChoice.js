@@ -18,10 +18,7 @@ class InspirationChoice extends Component {
   render() {
     return (
       <Card
-        style={{
-          flex: 1,
-          justifyContent: 'center',
-          alignItems: 'center' }}>
+        style={styles.containerStyle}>
         <CardSection>
           <TouchableOpacity
           style={{ paddingLeft: 30, paddingBottom: 20 }}
@@ -48,21 +45,20 @@ class InspirationChoice extends Component {
 }
 
 const styles = {
+  containerStyle: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
   logo1Style: {
-    // flex: 1,
-    // width: null,
-    // height: null,
     height: 50,
     alignSelf: 'center',
     resizeMode: 'contain',
   },
   logo2Style: {
-    // flex: 1,
-    // width: null,
-    // height: null,
     height: 200,
     alignSelf: 'center',
-      resizeMode: 'contain'
+    resizeMode: 'contain'
   }
 };
 

@@ -3,7 +3,7 @@ import {
   CHALLENGE_CREATE
 } from '../actions/types';
 
-const INITIAL_STATE = { challenger: null };
+const INITIAL_STATE = { currentChallenge: null };
 
 export default (state = INITIAL_STATE, action) => {
   console.log(action);
@@ -11,10 +11,10 @@ export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case REHYDRATE:
       console.log('IN REHYDRATE: ', action.payload.challenger);
-      return action.payload.auth || [];
+      return action.payload.challenge || [];
     case CHALLENGE_CREATE:
       console.log('action.payload: ', action.payload);
-      return { ...state, challenger: action.payload.challenge, challenge_ref: action.payload.ref, challenge_uid: action.payload.uid };
+      return { ...state, currentChallenge: action.payload.challenge, challenge_ref: action.payload.ref, challenge_uid: action.payload.uid };
     default:
     return state;
   }

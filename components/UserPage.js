@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import { connect } from 'react-redux';
 // import axios from 'axios';
 import UserDetail from './UserDetail';
-import { loginUser } from '../actions';
+import * as actions from '../actions';
 
 
 class UserPage extends Component {
@@ -19,17 +19,19 @@ class UserPage extends Component {
 
     return (
       <View>
-        <UserDetail user={this.props.user} theme={this.props.theme} />
+        <UserDetail user={this.props.user} />
       </View>
     );
   }
 
 }
 
-const mapStateToProps = ({ auth }) => {
-  const { email, error, loading, user, theme } = auth;
+const mapStateToProps = ({ auth, challenge }) => {
+  const { email, error, loading, user } = auth;
+  console.log('CHALLENGE IN USERPAGE: ', challenge);
+  const { currentChallenge } = challenge;
 
-  return { email, error, loading, user, theme };
+  return { email, error, loading, user, currentChallenge };
 };
 
-export default connect(mapStateToProps, { loginUser })(UserPage);
+export default connect(mapStateToProps, actions)(UserPage);

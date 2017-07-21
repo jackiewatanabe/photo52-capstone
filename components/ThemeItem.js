@@ -17,11 +17,11 @@ class ThemeItem extends Component {
 
       // this.props.photoCreate({
       //   name, description, category: category || 'uncategorized', image_url });
-      Actions.themePage({ theme: this.props.challenge.theme });
+      Actions.themePage({ theme: this.props.currentChallenge.theme });
   }
 
   renderButton() {
-    switch (this.props.challenge === null) {
+    switch (this.props.currentChallenge === null) {
       case true:
         return (
           <Button
@@ -31,17 +31,17 @@ class ThemeItem extends Component {
           </Button>
         );
       case false:
-        console.log('renderButton false in ThemeItem: ', this.props.challenge.theme);
+        console.log('renderButton false in ThemeItem: ', this.props.currentChallenge.theme);
         return (
           <Button
             onPress={this.onButtonPress.bind(this)}
             style={{ flex: 1 }}
           >
-            {this.props.challenge.theme}
+            {this.props.currentChallenge.theme}
           </Button>
       );
       default:
-        console.log('renderButton default in ThemeItem: ', this.props.challenge);
+        console.log('renderButton default in ThemeItem: ', this.props.currentChallenge);
         return (
 
         <Button
@@ -78,12 +78,12 @@ class ThemeItem extends Component {
 
 }
 
-const mapStateToProps = ({ auth, challenger }) => {
+const mapStateToProps = ({ auth, challenge }) => {
   const { user } = auth;
-  console.log('CHALLENGERRR: ', challenger);
-  const { challenge } = challenger;
+  console.log('CHALLENGERRR: ', challenge);
+  const { currentChallenge } = challenge;
 
-  return { user, challenge };
+  return { user, currentChallenge };
 };
 
 

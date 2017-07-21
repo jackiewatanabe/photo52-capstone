@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 // import firebase from 'firebase';
 import { Text, View, Image } from 'react-native';
 import { Card, CardSection } from './common';
@@ -8,57 +8,57 @@ import ThemeItem from './ThemeItem';
 // const { currentUser } = firebase.auth();
 
 
-const UserDetail = (props) => {
-  console.log('Im in USERDETAIL props: ', props.user);
+class UserDetail extends Component {
+  // console.log('Im in USERDETAIL props: ', props.user);
 
-  const { user, theme } = props;
-
-  return (
-    <View>
-      <Card>
-        <CardSection>
-          <View style={styles.thumbnailContainerStyle}>
-            <Image
-            style={styles.thumbnailStyle}
-            source={{
-              uri: 'https://farm8.staticflickr.com/7290/12125301174_52146c676a_s.jpg'
-            }}
-            />
-          </View>
-          <View style={styles.usernameContentStyle}>
-            <Text
-              style={{
-                fontFamily: 'Avenir-Light',
-                fontWeight: '100',
-                letterSpacing: 2
+  // const { user, theme } = props;
+  render() {
+    return (
+      <View>
+        <Card>
+          <CardSection>
+            <View style={styles.thumbnailContainerStyle}>
+              <Image
+              style={styles.thumbnailStyle}
+              source={{
+                uri: 'https://farm8.staticflickr.com/7290/12125301174_52146c676a_s.jpg'
               }}
-            >
-              {user.email}
+              />
+            </View>
+            <View style={styles.usernameContentStyle}>
+              <Text
+                style={{
+                  fontFamily: 'Avenir-Light',
+                  fontWeight: '100',
+                  letterSpacing: 2
+                }}
+              >
+                {this.props.user.email}
+              </Text>
+            </View>
+          </CardSection>
+
+            <ThemeItem style={{ width: 300 }} />
+
+        </Card>
+        <Card>
+          <CardSection>
+            <Text style={{
+              fontFamily: 'Avenir-Light',
+              fontWeight: '100',
+              letterSpacing: 2
+          }}>
+              MY PHOTOROLL
             </Text>
-          </View>
-        </CardSection>
-
-          <ThemeItem theme={theme} style={{ width: 300 }} />
-
-      </Card>
-      <Card>
-        <CardSection>
-          <Text style={{
-            fontFamily: 'Avenir-Light',
-            fontWeight: '100',
-            letterSpacing: 2
-        }}>
-            MY PHOTOROLL
-          </Text>
-        </CardSection>
-        <PhotoList />
-      </Card>
-    </View>
-  );
-};
+          </CardSection>
+          <PhotoList />
+        </Card>
+      </View>
+    );
+  }
+}
 
 const styles = {
-
   thumbnailStyle: {
     height: 60,
     width: 60,
@@ -108,6 +108,14 @@ const styles = {
     flex: 1
   }
 
+};
+
+const mapStateToProps = ({ auth, challenge }) => {
+  const { email, error, loading, user } = auth;
+  console.log('CHALLENGE IN USERDETAILPAGE: ', challenge);
+  const { currentChallenge } = challenge;
+
+  return { email, error, loading, user, currentChallenge };
 };
 
 export default UserDetail;

@@ -16,5 +16,5 @@ export default combineReducers({
     selectedResultPhotoId: SelectionReducer,
     unsplashPhotos: UnsplashSearchReducer,
     flickrPhotos: FlickrSearchReducer,
-    challenger: ChallengeReducer
+    challenge: ChallengeReducer
 });

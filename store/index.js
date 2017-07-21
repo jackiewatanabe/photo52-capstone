@@ -15,6 +15,6 @@ const store = createStore(
 
 console.log('MADE IT TO STORE');
 
-persistStore(store, { storage: AsyncStorage, whitelist: ['challenger'] });
+persistStore(store, { storage: AsyncStorage, whitelist: ['challenger'] }).purge();
 
 export default store;

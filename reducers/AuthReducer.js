@@ -1,3 +1,4 @@
+import { REHYDRATE } from 'redux-persist/constants';
 import {
   EMAIL_CHANGED,
   PASSWORD_CHANGED,
@@ -24,17 +25,16 @@ export default (state = INITIAL_STATE, action) => {
       case LOGIN_USER_SUCCESS:
       console.log('in LOGIN_USER_SUCCESS in authreducer: ', action.payload);
         return {
-          ...state, ...INITIAL_STATE, user: action.payload
+          ...state,
+          error: '',
+          loading: false,
+          email: '',
+          password: '',
+          user: action.payload
         };
-        // error: '',
-        // loading: false,
-        // email: '',
-        // password: ''
+        //
       case LOGIN_USER_FAIL:
         return { ...state, error: 'Authentication Failed', loading: false, password: '' };
-      case CHALLENGE_CREATE:
-        console.log('action.payload: ', action.payload);
-        return { ...state, challenge: action.payload.challenge, challenge_ref: action.payload.ref, challenge_uid: action.payload.uid };
       default:
         return state;
     }

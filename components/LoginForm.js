@@ -39,15 +39,15 @@ class LoginForm extends Component {
     render() {
       return (
         <Card>
-          <CardSection style={{ paddingTop: 30, paddingBottom: 30, alignSelf: 'center', width: 250 }}>
+          <CardSection style={{ paddingTop: 40, paddingBottom: 50, alignSelf: 'center', width: 250 }}>
             <View style={{ flex: 1, alignSelf: 'center' }}>
-              <Text style={{ fontFamily: 'Iowan Old Style', textAlign: 'center', fontStyle: 'italic', fontSize: 18 }}>
+              <Text style={{ fontFamily: 'Iowan Old Style', textAlign: 'center', fontStyle: 'italic', fontSize: 16 }}>
                 Becoming a better photographer begins with taking more pictures. Push yourself to try new techniques with just one image a week.
               </Text>
             </View>
           </CardSection>
           <CardSection>
-            <View style={{ flex: 1, alignSelf: 'center', paddingBottom: 20 }}>
+            <View style={{ flex: 1, alignSelf: 'center', paddingBottom: 40 }}>
               <Text style={{ fontFamily: 'Avenir-Light', textAlign: 'center', fontSize: 20, letterSpacing: 3 }}>
                 START YOUR PHOTO52 CHALLENGE TODAY!
               </Text>
@@ -73,8 +73,7 @@ class LoginForm extends Component {
           <Text style={styles.errorTextStyle}>
             {this.props.error}
           </Text>
-          <CardSection>
-
+          <CardSection style={{ alignSelf: 'center', width: 250 }}>
             {this.renderButton()}
           </CardSection>
 

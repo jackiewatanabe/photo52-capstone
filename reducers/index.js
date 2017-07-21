@@ -6,6 +6,7 @@ import ThemeReducer from './ThemeReducer';
 import SelectionReducer from './SelectionReducer';
 import UnsplashSearchReducer from './UnsplashSearchReducer';
 import FlickrSearchReducer from './FlickrSearchReducer';
+import ChallengeReducer from './ChallengeReducer';
 
 export default combineReducers({
     auth: AuthReducer,
@@ -14,5 +15,6 @@ export default combineReducers({
     themes: ThemeReducer,
     selectedResultPhotoId: SelectionReducer,
     unsplashPhotos: UnsplashSearchReducer,
-    flickrPhotos: FlickrSearchReducer
+    flickrPhotos: FlickrSearchReducer,
+    challenger: ChallengeReducer
 });

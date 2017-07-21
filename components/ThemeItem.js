@@ -17,7 +17,7 @@ class ThemeItem extends Component {
 
       // this.props.photoCreate({
       //   name, description, category: category || 'uncategorized', image_url });
-      Actions.themePage({ theme: this.props.theme });
+      Actions.themePage({ theme: this.props.challenge.theme });
   }
 
   renderButton() {
@@ -26,13 +26,12 @@ class ThemeItem extends Component {
         return (
           <Button
             onPress={this.onButtonPress.bind(this)}
-            style={{ flex: 1 }}
           >
             NO THEME SET YET
           </Button>
         );
       case false:
-        console.log('renderButton false in ThemeItem: ', this.props.theme);
+        console.log('renderButton false in ThemeItem: ', this.props.challenge.theme);
         return (
           <Button
             onPress={this.onButtonPress.bind(this)}
@@ -42,7 +41,7 @@ class ThemeItem extends Component {
           </Button>
       );
       default:
-        console.log('renderButton default in ThemeItem: ', this.props.theme);
+        console.log('renderButton default in ThemeItem: ', this.props.challenge);
         return (
 
         <Button
@@ -56,6 +55,7 @@ class ThemeItem extends Component {
   }
 
   render() {
+    console.log('THEEEME: ', this.props);
     return (
       <Card>
         <CardSection>
@@ -78,8 +78,10 @@ class ThemeItem extends Component {
 
 }
 
-const mapStateToProps = ({ auth }) => {
-  const { user, challenge } = auth;
+const mapStateToProps = ({ auth, challenger }) => {
+  const { user } = auth;
+  console.log('CHALLENGERRR: ', challenger);
+  const { challenge } = challenger;
 
   return { user, challenge };
 };

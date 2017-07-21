@@ -37,7 +37,9 @@ const UserDetail = (props) => {
             </Text>
           </View>
         </CardSection>
-        <ThemeItem theme={theme} />
+
+          <ThemeItem theme={theme} style={{ width: 300 }} />
+
       </Card>
       <Card>
         <CardSection>

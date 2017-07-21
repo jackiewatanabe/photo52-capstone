@@ -136,7 +136,7 @@ class ThemePage extends Component {
       switch (this.props.challenge !== null) {
         case true:
           return (
-              <Button onPress={this.onUploadPress.bind(this)}>UPLOAD PHOTO</Button>
+              <Button onPress={this.onUploadPress.bind(this)}>SUBMIT YOUR PHOTO</Button>
           );
         case false: break;
         default: break;
@@ -205,19 +205,19 @@ class ThemePage extends Component {
             </View>
           </CardSection>
 
-          <CardSection>
+          <CardSection style={{ alignSelf: 'center', width: 275 }}>
             {this.renderChallengeButton()}
           </CardSection>
 
-          <CardSection>
+          <CardSection style={{ alignSelf: 'center', width: 275, paddingTop: 30, paddingBottom: 30 }}>
             {this.renderCountdown()}
           </CardSection>
 
-          <CardSection>
+          <CardSection style={{ alignSelf: 'center', width: 275 }}>
             {this.renderInspireButton()}
           </CardSection>
 
-          <CardSection>
+          <CardSection style={{ alignSelf: 'center', width: 275 }}>
             {this.renderUploadButton()}
           </CardSection>
 
@@ -229,10 +229,10 @@ class ThemePage extends Component {
 const styles = {
 
 };
-const mapStateToProps = ({ auth }) => {
-  const { challenge } = auth;
+const mapStateToProps = ({ auth, challenger }) => {
+  // const { challenge } = auth;
   const expanded = false;
-
+  const { challenge } = challenger;
   return { challenge, expanded };
 };
 

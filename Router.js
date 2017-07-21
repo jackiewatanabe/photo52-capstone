@@ -10,6 +10,7 @@ import InspirationChoice from './components/InspirationChoice';
 // import Example from './components/Example';
 import PhotoSelect from './PhotoSelect';
 import Gallery from './components/Gallery';
+import ChallengeComplete from './components/ChallengeComplete';
 // import CameraRolls from './components/CameraRolls';
 // import ImageBrowser from './components/ImageBrowser';
 
@@ -31,7 +32,7 @@ const RouterComponent = () => {
         onRight={() => Actions.photoCreate()}
         rightTitle="+"
         />
-        <Scene key="photoCreate" component={PhotoCreate} title="Create Photo" />
+        <Scene key="photoCreate" component={PhotoCreate} title="Upload Photo" />
         <Scene
           key="photoList" component={PhotoList} title="Photoroll"
           onLeft={() => Actions.userPage()}
@@ -71,6 +72,10 @@ const RouterComponent = () => {
           key="gallery" component={Gallery}
           title="Gallery"
         />
+        <Scene
+          key="challengeComplete" component={ChallengeComplete}
+          title="CHALLENGE COMPLETE"
+        />
       </Scene>
     </Router>
   );
@@ -89,12 +94,3 @@ const styles = {
 };
 
 export default RouterComponent;
-
-
-// <Scene
-//   onRight={() => Actions.photoCreate()}
-//   rightTitle="Add"
-//   key="photoList" component={PhotoList} title="Photos"
-//   initial
-// />
-// <Scene key="photoCreate" component={PhotoCreate} title="Create Photo" />

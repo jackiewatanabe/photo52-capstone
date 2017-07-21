@@ -73,8 +73,7 @@ class LoginForm extends Component {
           <Text style={styles.errorTextStyle}>
             {this.props.error}
           </Text>
-          <CardSection>
-
+          <CardSection style={{ alignSelf: 'center', width: 250 }}>
             {this.renderButton()}
           </CardSection>
 

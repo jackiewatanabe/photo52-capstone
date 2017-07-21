@@ -205,7 +205,7 @@ class ThemePage extends Component {
             </View>
           </CardSection>
 
-          <CardSection>
+          <CardSection style={{ alignSelf: 'center', width: 250 }}>
             {this.renderChallengeButton()}
           </CardSection>
 
@@ -213,11 +213,11 @@ class ThemePage extends Component {
             {this.renderCountdown()}
           </CardSection>
 
-          <CardSection>
+          <CardSection style={{ alignSelf: 'center', width: 250 }}>
             {this.renderInspireButton()}
           </CardSection>
 
-          <CardSection>
+          <CardSection style={{ alignSelf: 'center', width: 250 }}>
             {this.renderUploadButton()}
           </CardSection>
 

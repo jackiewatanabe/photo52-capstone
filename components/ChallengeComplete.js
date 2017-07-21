@@ -41,12 +41,12 @@ class ChallengeComplete extends Component {
               <Text style={styles.fillerText}>star image goes here</Text>
             </View>
           </CardSection>
-          <CardSection>
+          <CardSection style={{ alignSelf: 'center', width: 250 }}>
             <Button onPress={this.onPhotorollPress.bind(this)}>
               SEE YOUR PHOTO ROLL
             </Button>
           </CardSection>
-          <CardSection>
+          <CardSection style={{ alignSelf: 'center', width: 250 }}>
             <Button>
               GET NEXT CHALLENGE
             </Button>

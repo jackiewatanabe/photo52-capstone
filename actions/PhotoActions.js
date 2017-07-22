@@ -29,31 +29,43 @@ export const photoCreate = (theme) => {
 };
 
 
-export const challengeSave = ({ theme, start_date, image_url, challenge_uid }) => {
-  const { currentUser } = firebase.auth();
-
+export const challengeSave = ({ theme, start_date, image_url, challenge_uid, week }) => {
   const today = new Date();
   const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
   const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-  const dateTime = date+' '+time;
+  const dateTime = date + ' ' + time;
+
+  const { currentUser } = firebase.auth();
 
   return (dispatch) => {
     firebase.database().ref(`/users/${currentUser.uid}/challenges/${challenge_uid}`)
-    .set({ theme, start_date, image_url, complete: true, end_date: dateTime })
+    .set({ theme, start_date, image_url, complete: true, end_date: dateTime, week })
     .then(() => {
       dispatch({ type: CHALLENGE_SAVE });
       Actions.challengeComplete({ type: 'reset' });
       // dispatch({ type: CHALLENGE_COMPLETE });
-      challengeCompleted();
+      // updateChallengeCount();
+      // const data = { challenge: null, week: week_count };
+      dispatch({ type: CHALLENGE_COMPLETE, payload: (week + 1) });
+      // challengeCompleted(week_count);
     });
   };
 };
 
-export const challengeCompleted = () => {
+// export const updateChallengeCount = () => {
+//   const { currentUser } = firebase.auth();
+//   firebase.database().ref(`/users/${currentUser.uid}/completed_challenges`)
+//   .set
+//
+// }
+
+export const challengeCompleted = (week_count) => {
+  console.log('WEEK COUNT: ', week_count);
   console.log('MADE IT TO CHALLENGE COMPLETED!!');
+  // const data = { challenge: null, week: week_count };
   return {
     type: CHALLENGE_COMPLETE,
-    payload: null
+    payload: week_count
   };
 };
 

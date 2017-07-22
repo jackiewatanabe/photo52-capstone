@@ -78,7 +78,7 @@ export const challengeCreate = (theme) => {
       console.log('CHALLENGE!! ', challenge);
       challenge.once('value', challengeSnapshot => {
         dispatch({ type: CHALLENGE_CREATE,
-                   payload: {
+                    payload: {
                     challenge: challengeSnapshot.val(),
                     ref: challenge,
                     uid: challenge.path.o[3]

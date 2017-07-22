@@ -46,9 +46,10 @@ class PhotoCreate extends Component {
 
   onButtonPress() {
     const { theme, start_date } = this.props.challenge;
-    const { challenge_uid, image_url } = this.props;
+    const { challenge_uid, image_url, week } = this.props;
+    // var week_count = week + 1;
 
-    this.props.challengeSave({ theme, image_url, challenge_uid, start_date });
+    this.props.challengeSave({ theme, image_url, challenge_uid, start_date, week });
   }
 
   onChooseButtonPress() {
@@ -241,8 +242,8 @@ styles = StyleSheet.create({
 
 const mapStateToProps = (state) => {
   const { image_url } = state.photoForm;
-  const { challenge, challenge_ref, challenge_uid } = state.auth;
-  return { challenge, challenge_ref, challenge_uid, image_url };
+  const { challenge, challenge_ref, challenge_uid, week } = state.auth;
+  return { challenge, challenge_ref, challenge_uid, image_url, week };
 };
 
 export default connect(mapStateToProps, { photoUpdate, photoCreate, challengeSave })(PhotoCreate);

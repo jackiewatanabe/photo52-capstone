@@ -128,7 +128,7 @@ class InspirationPage extends Component {
               alignSelf: 'center',
               fontFamily: 'Iowan Old Style',
               fontSize: 35,
-              letterSpacing: 2 }}>{this.props.theme}</Text>
+              letterSpacing: 2 }}>{this.props.theme.toUpperCase()}</Text>
           </View>
         </CardSection>
 

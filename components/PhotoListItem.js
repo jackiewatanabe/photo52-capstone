@@ -16,19 +16,21 @@ class PhotoListItem extends Component {
 
   // const { camera, lens, iso, shutter_speed, aperture } = this.props.photo;
 
-  const { theme, end_date } = photo;
+  const { theme, end_date, week } = photo;
 
   if (expanded) {
     return (
       <CardSection style={styles.resultDetail}>
         <View style={{ flex: 1, alignSelf: 'center', flexDirection: 'row' }}>
           <View style={{ flex: 2.7, flexDirection: 'column' }}>
+            <Text style={styles.resultDetailTextLabel}>WEEK: </Text>
             <Text style={styles.resultDetailTextLabel}>THEME:  </Text>
             <Text style={styles.resultDetailTextLabel}>COMPLETED:
             </Text>
           </View>
           <View style={{ flex: 3, flexDirection: 'column' }}>
-            <Text style={styles.resultDetailText}>{theme ? theme : 'n/a'}</Text>
+            <Text style={styles.resultDetailText}>{week} of 52</Text>
+            <Text style={styles.resultDetailText}>{theme ? theme.toUpperCase() : 'n/a'}</Text>
             <Text style={styles.resultDetailText}>{end_date ? end_date : 'n/a'}</Text>
           </View>
         </View>

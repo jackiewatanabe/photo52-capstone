@@ -28,7 +28,7 @@ class ThemePage extends Component {
     // }
 
     onButtonPress() {
-      const myThemes = ['BLACK AND WHITE', 'LEADING LINES', 'CIRCLES', 'WEEE!!!', 'COFFEE', 'MORNING', 'LONG EXPOSURE', 'NIGHT SKY', 'PORTRAIT OF A STRANGER', 'WATER', 'SELF-PORTRAIT', 'SILHOUETTE', 'MOVEMENT', 'MESSY', 'WEATHER', 'TRANSPORTATION', 'BLUE', 'RED', 'COLORS', 'MINIMALISM', 'BOKEH', 'SOLITUDE', 'GET HIGH', 'GET LOW', 'FASHION', 'TRENDY', 'STREET CANDID', 'FOOD', 'SYMMETRY', 'WABISABI', 'MUSIC', 'TEXTURE', 'CLOSE-UP', 'LIGHT PAINTING', 'BUSINESS', 'FORMAL', 'FAVORITE', 'MID-DAY', 'FEET', 'HANDS', 'SHADOWS', 'ANGLES', 'GROWTH', 'SOFT', 'FRIENDSHIP', 'FURRY FRIENDS', 'DISTANCE', 'NOSTALGIA', 'BLUR'];
+      const myThemes = ['black and white', 'Leading Lines', 'circles', 'morning', 'long exposure', 'night sky', 'portrait of a stranger', 'water', 'self-portrait', 'silhouette', 'movement', 'messy', 'weather', 'transportation', 'blue', 'red', 'colors', 'minimalism', 'bokeh', 'SOLITUDE', 'GET HIGH', 'GET LOW', 'FASHION', 'TRENDY', 'STREET CANDID', 'food', 'symmetry', 'wabisabi', 'music', 'texture', 'close-up', 'light painting', 'business', 'formal', 'favorite', 'mid-day', 'feet', 'hands', 'shadows', 'angles', 'growth', 'soft', 'friendship', 'furry friends', 'distance', 'nostalgia', 'blur'];
       const rand = myThemes[Math.floor(Math.random() * myThemes.length)];
       // const { theme } = this.state;
       // this.setState({ theme: 'WEEEEE' });
@@ -92,7 +92,7 @@ class ThemePage extends Component {
                       fontFamily: 'Iowan Old Style',
                       fontSize: 30,
                       letterSpacing: 2 }}
-                  >{this.props.challenge.theme}</Text>
+                  >{this.props.challenge.theme.toUpperCase()}</Text>
                 </View>
           );
         default:
@@ -201,7 +201,7 @@ class ThemePage extends Component {
                   fontWeight: '100',
                   fontSize: 30,
                   letterSpacing: 2 }}
-              >WEEK 1 OF 52</Text>
+              >WEEK {this.props.week} OF 52</Text>
             </View>
           </CardSection>
 
@@ -230,10 +230,10 @@ const styles = {
 
 };
 const mapStateToProps = ({ auth }) => {
-  const { challenge } = auth;
+  const { challenge, week } = auth;
   const expanded = false;
 
-  return { challenge, expanded };
+  return { challenge, week, expanded };
 };
 
 

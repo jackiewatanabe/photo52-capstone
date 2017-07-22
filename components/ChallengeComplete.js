@@ -3,6 +3,7 @@ import { View, Text, LayoutAnimation, TouchableWithoutFeedback } from 'react-nat
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { Card, CardSection, Button } from './common';
+import * as actions from '../actions';
 
 class ChallengeComplete extends Component {
 
@@ -36,7 +37,7 @@ class ChallengeComplete extends Component {
                 Great job on completing
               </Text>
               <Text style={styles.challengeText}>
-                challenge 1 of 52!
+                challenge { (this.props.week - 1) } of 52!
               </Text>
             </View>
           </CardSection>
@@ -89,4 +90,11 @@ const styles = {
   }
 };
 
-export default ChallengeComplete;
+const mapStateToProps = ({ auth }) => {
+  const { week } = auth;
+  const expanded = false;
+
+  return { week };
+};
+
+export default connect(mapStateToProps, actions)(ChallengeComplete);

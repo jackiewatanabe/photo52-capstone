@@ -9,7 +9,7 @@ import {
   CHALLENGE_COMPLETE
 } from '../actions/types';
 
-const INITIAL_STATE = { email: '', password: '', user: null, error: '', loading: false, challenge: null };
+const INITIAL_STATE = { email: '', password: '', user: null, error: '', loading: false, challenge: null , week: 1 };
 
 export default (state = INITIAL_STATE, action) => {
     console.log(action);
@@ -20,7 +20,8 @@ export default (state = INITIAL_STATE, action) => {
         return action.payload.auth || [];
       case CHALLENGE_COMPLETE:
       console.log('IN CHALLENGE_COMPLETE');
-        return { ...state, challenge: null };
+      console.log('challenge_complete:', action.payload);
+        return { ...state, challenge: null, week: action.payload };
       case EMAIL_CHANGED:
         return { ...state, email: action.payload };
       case PASSWORD_CHANGED:

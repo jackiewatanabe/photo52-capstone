@@ -38,7 +38,7 @@ class ThemeItem extends Component {
             onPress={this.onButtonPress.bind(this)}
             style={{ flex: 1 }}
           >
-            {this.props.challenge.theme}
+            {this.props.challenge.theme.toUpperCase()}
           </Button>
       );
       default:

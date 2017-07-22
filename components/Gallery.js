@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import {
-  AppRegistry,
   StyleSheet,
-  Text,
   View
 } from 'react-native';
 import firebase from 'firebase';
@@ -16,51 +14,48 @@ class Gallery extends Component {
   // state = { image_url: null }
 
   getSelectedImages = (selectedImages, currentImage) => {
-
     const image = currentImage.uri;
 
-    const { uid }= this.props.user;
+    const { uid } = this.props.user;
 
     console.log('currentImage in getSelectedImages', currentImage);
     console.log('props in getSlected Images: ', this.props);
-    const Blob = RNFetchBlob.polyfill.Blob
-    const fs = RNFetchBlob.fs
-    window.XMLHttpRequest = RNFetchBlob.polyfill.XMLHttpRequest
-    window.Blob = Blob
+    const Blob = RNFetchBlob.polyfill.Blob;
+    const fs = RNFetchBlob.fs;
+    window.XMLHttpRequest = RNFetchBlob.polyfill.XMLHttpRequest;
+    window.Blob = Blob;
 
 
-    let uploadBlob = null
-    const imageRef = firebase.storage().ref('user').child(`${uid}`).child(`images`).child(`${currentImage.filename}`);
-    let mime = 'image/jpg'
+    let uploadBlob = null;
+    const imageRef = firebase.storage().ref('user').child(`${uid}`).child(`images`)
+    .child(`${currentImage.filename}`);
+    const mime = 'image/jpg';
     fs.readFile(image, 'base64')
       .then((data) => {
-        return Blob.build(data, { type: `${mime};BASE64` })
+        return Blob.build(data, { type: `${mime};BASE64` });
     })
     .then((blob) => {
-        uploadBlob = blob
-        return imageRef.put(blob, { contentType: mime })
+        uploadBlob = blob;
+        return imageRef.put(blob, { contentType: mime });
       })
       .then(() => {
-        uploadBlob.close()
-        return imageRef.getDownloadURL()
+        uploadBlob.close();
+        return imageRef.getDownloadURL();
       })
       .then((url) => {
         // URL of the image uploaded on Firebase storage
         console.log(url);
 
-        console.log("this.props.upload_image_url: ", this.props.image_url);
+        console.log('this.props.upload_image_url: ', this.props.image_url);
         this.props.photoUpdate({ prop: 'image_url', value: url });
         Actions.photoCreate();
-
       })
       .catch((error) => {
         console.log(error);
-
-      })
-
+      });
   }
-  render() {
 
+  render() {
     return (
       <View style={styles.container}>
         <CameraRollPicker
@@ -75,8 +70,8 @@ class Gallery extends Component {
           assetType='Photos'
           imagesPerRow={3}
           imageMargin={5}
-          callback={this.getSelectedImages.bind(this)} />
-
+          callback={this.getSelectedImages.bind(this)}
+        />
       </View>
     );
   }

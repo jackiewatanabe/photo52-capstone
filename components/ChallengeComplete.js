@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, LayoutAnimation, TouchableWithoutFeedback } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Card, CardSection, Button } from './common';
 import * as actions from '../actions';
 
@@ -31,7 +32,12 @@ class ChallengeComplete extends Component {
               </Text>
             </View>
           </CardSection>
-          <CardSection>
+          <CardSection style={{ alignSelf: 'center', paddingBottom: 10 }}>
+            <View style={styles.fillerContainer}>
+              <Icon name="star-border" size={150} color="#000" style={{ alignSelf: 'center', textAlign: 'center' }} />
+            </View>
+          </CardSection>
+          <CardSection style={{ paddingBottom: 30 }}>
             <View style={styles.textContainer}>
               <Text style={styles.challengeText}>
                 Great job on completing
@@ -39,11 +45,6 @@ class ChallengeComplete extends Component {
               <Text style={styles.challengeText}>
                 challenge { (this.props.week - 1) } of 52!
               </Text>
-            </View>
-          </CardSection>
-          <CardSection>
-            <View style={styles.fillerContainer}>
-              <Text style={styles.fillerText}>star image goes here</Text>
             </View>
           </CardSection>
           <CardSection style={{ alignSelf: 'center', width: 250 }}>

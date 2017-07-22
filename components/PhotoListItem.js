@@ -29,7 +29,7 @@ class PhotoListItem extends Component {
           </View>
           <View style={{ flex: 3, flexDirection: 'column' }}>
             <Text style={styles.resultDetailText}>{theme ? theme : 'n/a'}</Text>
-            <Text style={styles.resultDetailText}>{end_date ? end_Date : 'n/a'}</Text>
+            <Text style={styles.resultDetailText}>{end_date ? end_date : 'n/a'}</Text>
           </View>
         </View>
       </CardSection>

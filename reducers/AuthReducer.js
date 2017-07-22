@@ -5,7 +5,8 @@ import {
   LOGIN_USER_FAIL,
   LOGIN_USER,
   CHALLENGE_CREATE,
-  REHYDRATE
+  REHYDRATE,
+  CHALLENGE_COMPLETE
 } from '../actions/types';
 
 const INITIAL_STATE = { email: '', password: '', user: null, error: '', loading: false, challenge: null };
@@ -17,6 +18,9 @@ export default (state = INITIAL_STATE, action) => {
       case REHYDRATE:
         console.log('IN REHYDRATE: ', action.payload.challenger);
         return action.payload.auth || [];
+      case CHALLENGE_COMPLETE:
+      console.log('IN CHALLENGE_COMPLETE');
+        return { ...state, challenge: null };
       case EMAIL_CHANGED:
         return { ...state, email: action.payload };
       case PASSWORD_CHANGED:

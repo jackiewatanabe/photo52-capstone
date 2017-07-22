@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, Picker, CameraRoll, View, Modal, ScrollView, TouchableHighlight, Dimensions, Image } from 'react-native';
+import { StyleSheet, Text, Picker, CameraRoll, View, Modal, ScrollView, TouchableHighlight, Dimensions, Image, ImageBackground } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 // import CameraRollPicker from 'react-native-camera-roll-picker';
@@ -98,7 +98,7 @@ class PhotoCreate extends Component {
                       underlayColor='transparent'
                       onPress={() => this.setIndex(i)}
                     >
-                      <Image
+                      <ImageBackground
                         style={{
                           width: width / 3,
                           height: width / 3
@@ -127,23 +127,7 @@ class PhotoCreate extends Component {
           </View>
         </Modal>
       </CardSection>
-        <CardSection>
-          <Input
-            label="Theme"
-            placeholder="Enter image name here"
-            value={this.props.challenge.theme}
-            onChangeText={text => this.props.photoUpdate({ prop: 'theme', value: text })}
-          />
-        </CardSection>
 
-        <CardSection>
-          <Input
-            label="Image URL"
-            placeholder={this.props.image_url}
-            value={this.props.image_url}
-            onChangeText={text => this.props.photoUpdate({ prop: 'image_url', value: text })}
-          />
-        </CardSection>
         <CardSection>
           <Button
            onPress={this.onChooseButtonPress.bind(this)}
@@ -152,19 +136,6 @@ class PhotoCreate extends Component {
           </Button>
         </CardSection>
 
-        <CardSection style={{ flexDirection: 'column' }}>
-          <Text style={styles.pickerTextStyle}>Category</Text>
-          <Picker
-            selectedValue={this.props.category}
-            onValueChange={value => this.props.photoUpdate({ prop: 'category', value })}
-          >
-            <Picker.Item label="Uncategorized" value="uncategorized" />
-            <Picker.Item label="Portrait" value="portrait" />
-            <Picker.Item label="Landscape" value="landscape" />
-            <Picker.Item label="Animals" value="animals" />
-            <Picker.Item label="Fashion" value="fashion" />
-          </Picker>
-        </CardSection>
         <CardSection>
           <Button onPress={this.onButtonPress.bind(this)}>UPLOAD</Button>
         </CardSection>

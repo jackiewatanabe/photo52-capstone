@@ -10,6 +10,10 @@ class ChallengeComplete extends Component {
         Actions.photoList();
     }
 
+    onNextChallengePress() {
+        Actions.themePage({ type: 'reset' });
+    }
+
     render(){
       return (
         <Card>
@@ -47,7 +51,7 @@ class ChallengeComplete extends Component {
             </Button>
           </CardSection>
           <CardSection style={{ alignSelf: 'center', width: 250 }}>
-            <Button>
+            <Button onPress={this.onNextChallengePress.bind(this)}>
               GET NEXT CHALLENGE
             </Button>
           </CardSection>

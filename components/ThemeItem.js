@@ -66,7 +66,7 @@ class ThemeItem extends Component {
               letterSpacing: 2
             }}
           >
-            THIS WEEKS THEME
+            THIS WEEK'S THEME
           </Text>
         </CardSection>
         <CardSection>

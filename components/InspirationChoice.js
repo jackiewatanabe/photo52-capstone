@@ -8,11 +8,11 @@ import * as actions from '../actions';
 class InspirationChoice extends Component {
 
   on500pxPress() {
-    Actions.inspirationPage({ api: '500px' });
+    Actions.inspirationPage({ api: '500px', title: '500px' });
   }
 
   onUnsplashPress() {
-    Actions.inspirationPage({ api: 'unsplash' });
+    Actions.inspirationPage({ api: 'unsplash', title: 'UNSPLASH' });
   }
 
   render() {

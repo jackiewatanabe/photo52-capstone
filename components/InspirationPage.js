@@ -119,7 +119,7 @@ class InspirationPage extends Component {
               fontWeight: 'normal',
               fontSize: 15,
               letterSpacing: 2 }}
-            >INSPIRATION - {api}
+            >INSPIRATION
             </Text>
             <Text style={{
               paddingTop: 10,

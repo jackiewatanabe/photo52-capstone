@@ -27,30 +27,22 @@ const RouterComponent = () => {
         title="PHOTO52" initial
         onLeft={() => Actions.photoList()}
         leftTitle="PHOTOROLL"
-        onRight={() => Actions.photoCreate()}
-        rightTitle="+"
         />
         <Scene key="photoCreate" component={PhotoCreate} title="Create Photo" />
         <Scene
           key="photoList" component={PhotoList} title="Photoroll"
           onLeft={() => Actions.userPage()}
           leftTitle="User Page"
-          onRight={() => Actions.photoCreate()}
-          rightTitle="+"
         />
         <Scene
           key="themePage" component={ThemePage} title="THEME PAGE"
-          onLeft={() => Actions.userPage()}
+          onLeft={() => Actions.userPage({ type: 'reset' })}
           leftTitle="User Page"
-          onRight={() => Actions.photoCreate()}
-          rightTitle="+"
         />
         <Scene
-          key="inspirationPage" component={InspirationPage} title="INSPIRATION PAGE"
+          key="inspirationPage" component={InspirationPage}
           onLeft={() => Actions.userPage()}
           leftTitle="User Page"
-          onRight={() => Actions.photoCreate()}
-          rightTitle="+"
         />
         <Scene
           key="photoSelect" component={PhotoSelect}

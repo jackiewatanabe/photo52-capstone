@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 // import axios from 'axios';
 import UserDetail from './UserDetail';
 import { loginUser } from '../actions';
-
+import PushNotifications from './PushNotifications';
 
 class UserPage extends Component {
   // state = { theme: this.props.theme, user: this.props.user };
@@ -20,6 +20,7 @@ class UserPage extends Component {
     return (
       <View>
         <UserDetail user={this.props.user} theme={this.props.theme} />
+        <PushNotifications />
       </View>
     );
   }

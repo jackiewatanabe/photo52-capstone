@@ -4,8 +4,6 @@ import App from './app';
 
 AppRegistry.registerComponent('rncameraroll', () => App);
 
-
-
 // import {
 //   AppRegistry
 // } from 'react-native';

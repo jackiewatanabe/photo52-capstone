@@ -12,7 +12,7 @@ import {
 const INITIAL_STATE = { email: '', password: '', user: null, error: '', loading: false, challenge: null , week: 1 };
 
 export default (state = INITIAL_STATE, action) => {
-    console.log(action);
+    // console.log(action);
 
     switch (action.type) {
       case REHYDRATE:

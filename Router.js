@@ -13,6 +13,7 @@ import PhotoSelect from './PhotoSelect';
 import Gallery from './components/Gallery';
 import ChallengeComplete from './components/ChallengeComplete';
 import ChallengeHistory from './components/ChallengeHistory';
+import PushNotifications from './components/PushNotifications';
 
 const RouterComponent = () => {
   const myIcon = (<Icon name="account-circle" size={30} color="#fff" style={{ alignSelf: 'center', textAlign: 'center' }} />);
@@ -81,6 +82,7 @@ const RouterComponent = () => {
           title="PROGRESS"
         />
       </Scene>
+      
     </Router>
   );
 };

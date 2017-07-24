@@ -46,6 +46,7 @@ class App extends Component {
       PushNotification.localNotificationSchedule({
         message: 'Dont forget to complete your challenge!!', // (required)
         date: new Date(Date.now() + (5 * 1000)), // in 5 secs
+        number: 0,
       });
       console.log('app is in background');
     }

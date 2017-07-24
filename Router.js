@@ -11,6 +11,7 @@ import InspirationChoice from './components/InspirationChoice';
 // import Example from './components/Example';
 import PhotoSelect from './PhotoSelect';
 import Gallery from './components/Gallery';
+import ShareGallery from './components/ShareGallery';
 import ChallengeComplete from './components/ChallengeComplete';
 import ChallengeHistory from './components/ChallengeHistory';
 import PushNotifications from './components/PushNotifications';
@@ -74,6 +75,10 @@ const RouterComponent = () => {
           title="Gallery"
         />
         <Scene
+          key="shareGallery" component={ShareGallery}
+          title="SHARE"
+        />
+        <Scene
           key="challengeComplete" component={ChallengeComplete}
           title="PHOTO52"
         />
@@ -82,7 +87,7 @@ const RouterComponent = () => {
           title="PROGRESS"
         />
       </Scene>
-      
+
     </Router>
   );
 };

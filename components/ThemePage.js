@@ -9,48 +9,21 @@ import { Card, CardSection, Button } from './common';
 import { challengeCreate, photoCreate } from '../actions';
 
 class ThemePage extends Component {
-    // state = { theme: this.props.theme };
 
     componentWillMount() {
       LayoutAnimation.easeInEaseOut();
-      // this.setState(this.props.themeChanged('asdf'));
     }
-
-
-    // componentWillMount() {
-    //   // if (this.state.theme) {
-    //   //   this.setState({ theme: 'something' });
-    //   // } else {
-    //   //   this.setState({ theme: null });
-    //   // }
-    //   console.log('Im in component willmount themepage');
-    //   // this.setState({ theme: 'something' });
-    // }
 
     onButtonPress() {
       const myThemes = ['black and white', 'Leading Lines', 'circles', 'morning', 'long exposure', 'night sky', 'portrait of a stranger', 'water', 'self-portrait', 'silhouette', 'movement', 'messy', 'weather', 'transportation', 'blue', 'red', 'colors', 'minimalism', 'bokeh', 'SOLITUDE', 'GET HIGH', 'GET LOW', 'FASHION', 'TRENDY', 'STREET CANDID', 'food', 'symmetry', 'wabisabi', 'music', 'texture', 'close-up', 'light painting', 'business', 'formal', 'favorite', 'mid-day', 'feet', 'hands', 'shadows', 'angles', 'growth', 'soft', 'friendship', 'furry friends', 'distance', 'nostalgia', 'blur'];
       const rand = myThemes[Math.floor(Math.random() * myThemes.length)];
-      // const { theme } = this.state;
-      // this.setState({ theme: 'WEEEEE' });
-      // console.log('onButtonPress-before themeChanged: ', this.props.theme);
+
       this.props.challengeCreate(rand);
-      console.log('onButtonPress:', this.props.theme);
-
-
-      // const { name, description, category, image_url } = this.props;
-
-      // this.props.photoCreate(rand);
-      // ;
-      // return <Text>BLACK AND WHITE</Text>;
     }
 
     onInspirationPress() {
       Actions.inspirationChoice();
     }
-
-    // onFlickrPress() {
-    //   Actions.inspirationPage({ api: 'flickr'});
-    // }
 
     onUnsplashPress() {
       Actions.inspirationPage({ api: 'unsplash' });
@@ -120,40 +93,16 @@ class ThemePage extends Component {
       }
     }
 
-    // renderFlickrButton() {
-    //   switch (this.props.theme !== null) {
-    //     case true:
-    //       return (
-    //           <Button onPress={this.onFlickrPress.bind(this)} style={{ width: 300 }}>GET INSPIRED - Flickr</Button>
-    //       );
-    //     case false: break;
-    //     default: break;
-    //   }
-    // }
-
-
     renderUploadButton() {
       switch (this.props.challenge !== null) {
         case true:
           return (
-              <Button onPress={this.onUploadPress.bind(this)}>UPLOAD PHOTO</Button>
+              <Button onPress={this.onUploadPress.bind(this)}>SUBMIT PHOTO</Button>
           );
         case false: break;
         default: break;
       }
     }
-
-    // renderJoop() {
-    //   const { expanded } = this.props;
-    //
-    //   if (expanded) {
-    //     return (
-    //       <TouchableWithoutFeedback>
-    //         <Text>Hello</Text>
-    //       </TouchableWithoutFeedback>
-    //     );
-    //   }
-    // }
 
     renderCountdown() {
           switch (this.props.challenge !== null) {
@@ -220,7 +169,6 @@ class ThemePage extends Component {
           <CardSection style={{ alignSelf: 'center', width: 250 }}>
             {this.renderUploadButton()}
           </CardSection>
-
         </Card>
       );
     }
@@ -229,12 +177,12 @@ class ThemePage extends Component {
 const styles = {
 
 };
+
 const mapStateToProps = ({ auth }) => {
   const { challenge, week } = auth;
   const expanded = false;
 
   return { challenge, week, expanded };
 };
-
 
 export default connect(mapStateToProps, { challengeCreate, photoCreate })(ThemePage);

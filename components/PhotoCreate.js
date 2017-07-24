@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, Picker, CameraRoll, View, Modal, ScrollView, TouchableHighlight, Dimensions, Image, ImageBackground } from 'react-native';
+import {
+  StyleSheet,
+  CameraRoll,
+  View,
+  Modal,
+  ScrollView,
+  TouchableHighlight,
+  Dimensions,
+  ImageBackground
+} from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
-// import CameraRollPicker from 'react-native-camera-roll-picker';
-import RNFetchBlob from 'react-native-fetch-blob';
-import { Card, CardSection, Input, Button } from './common';
+import { Card, CardSection, Button } from './common';
 import { photoUpdate, photoCreate, challengeSave } from '../actions';
-
-// import Share from 'react-native-share';
 
 const { width } = Dimensions.get('window');
 
@@ -29,21 +34,6 @@ class PhotoCreate extends Component {
       };
     }
 
-    setIndex = (index) => {
-      if (index === this.state.index) {
-        index = null;
-      }
-      this.setState({ index });
-    }
-
-    getPhotos = () => {
-      CameraRoll.getPhotos({
-        first: 20,
-        assetType: 'All'
-      })
-      .then(r => this.setState({ photos: r.edges }));
-    }
-
   onButtonPress() {
     const { theme, start_date } = this.props.challenge;
     const { challenge_uid, image_url, week } = this.props;
@@ -54,6 +44,25 @@ class PhotoCreate extends Component {
 
   onChooseButtonPress() {
       Actions.gallery();
+  }
+
+  onShareButtonPress() {
+    Actions.shareGallery();
+  }
+
+  getPhotos = () => {
+    CameraRoll.getPhotos({
+      first: 20,
+      assetType: 'All'
+    })
+    .then(r => this.setState({ photos: r.edges }));
+  }
+
+  setIndex = (index) => {
+    if (index === this.state.index) {
+      index = null;
+    }
+    this.setState({ index });
   }
 
   getSelectedImages(images, current) {
@@ -138,6 +147,14 @@ class PhotoCreate extends Component {
         </CardSection>
 
         <CardSection>
+          <Button
+            onPress={this.onShareButtonPress.bind(this)}
+          >
+            SHARE PHOTO
+          </Button>
+        </CardSection>
+
+        <CardSection>
           <Button onPress={this.onButtonPress.bind(this)}>UPLOAD</Button>
         </CardSection>
       </Card>
@@ -147,7 +164,7 @@ class PhotoCreate extends Component {
 }
 
 
-styles = StyleSheet.create({
+const styles = StyleSheet.create({
   pickerTextStyle: {
     fontSize: 18,
     paddingLeft: 20

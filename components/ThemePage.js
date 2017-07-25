@@ -30,7 +30,7 @@ class ThemePage extends Component {
     }
 
     onUploadPress() {
-      Actions.photoCreate();
+      Actions.gallery();
     }
 
     renderChallengeButton() {
@@ -154,7 +154,7 @@ class ThemePage extends Component {
             </View>
           </CardSection>
 
-          <CardSection style={{ alignSelf: 'center', width: 250 }}>
+          <CardSection style={{ alignSelf: 'center', width: 300 }}>
             {this.renderChallengeButton()}
           </CardSection>
 
@@ -162,11 +162,11 @@ class ThemePage extends Component {
             {this.renderCountdown()}
           </CardSection>
 
-          <CardSection style={{ alignSelf: 'center', width: 250 }}>
+          <CardSection style={{ alignSelf: 'center', width: 300 }}>
             {this.renderInspireButton()}
           </CardSection>
 
-          <CardSection style={{ alignSelf: 'center', width: 250 }}>
+          <CardSection style={{ alignSelf: 'center', width: 300 }}>
             {this.renderUploadButton()}
           </CardSection>
         </Card>

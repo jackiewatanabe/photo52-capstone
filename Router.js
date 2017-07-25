@@ -48,8 +48,8 @@ const RouterComponent = () => {
         />
         <Scene
           key="themePage" component={ThemePage} title="THEME PAGE"
-          onLeft={() => Actions.userPage({ type: 'reset' })}
-          leftTitle="User Page"
+          onLeft={() => Actions.userPage()}
+          leftTitle={myIcon}
         />
         <Scene
           key="inspirationPage" component={InspirationPage}
@@ -63,8 +63,10 @@ const RouterComponent = () => {
         <Scene
           key="photoList" component={PhotoList}
           title="PHOTOROLL"
-          onLeft={() => Actions.userPage()}
+          onLeft={() => Actions.userPage({ type: 'reset' })}
           leftTitle="User Page"
+          onRight={() => Actions.challengeHistory()}
+          rightTitle={myStarIcon}
         />
         <Scene
           key="inspirationChoice" component={InspirationChoice}
@@ -81,6 +83,10 @@ const RouterComponent = () => {
         <Scene
           key="challengeComplete" component={ChallengeComplete}
           title="PHOTO52"
+          onLeft={() => Actions.userPage({ type: 'reset' })}
+          leftTitle={myIcon}
+          onRight={() => Actions.challengeHistory()}
+          rightTitle={myStarIcon}
         />
         <Scene
           key="challengeHistory" component={ChallengeHistory}

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-import { Text, ImageBackground, Image, View, LayoutAnimation, TouchableWithoutFeedback } from 'react-native';
+import { Text, ImageBackground, Image, View, LayoutAnimation, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
+import Share from 'react-native-share';
+import RNFetchBlob from 'react-native-fetch-blob';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import * as actions from '../actions';
 import { CardSection } from './common';
 
@@ -34,11 +37,36 @@ class PhotoListItem extends Component {
             <Text style={styles.resultDetailText}>{end_date ? end_date : 'n/a'}</Text>
           </View>
         </View>
+        <TouchableOpacity onPress={this.share.bind(this)}>
+          <Icon
+              name="share"
+              size={35} color="#fff"
+              style={{ alignSelf: 'center', textAlign: 'center' }}
+          />
+        </TouchableOpacity>
       </CardSection>
     );
   }
 }
 
+
+share = (selectedImages, currentImage) => {
+  const image = this.props.photo.image_url;
+
+  // const image = this.state.photos[this.state.index].node.image.uri;
+  // RNFetchBlob.fs.readFile(image, 'base64')
+  // .then((data) => {
+    const shareOptions = {
+      title: 'React Native Share Example',
+      message: `Completing this week's #PHOTO52 challenge!`,
+      url: `${image}`,
+      subject: 'Check out my photo of the week!'
+    };
+
+    Share.open(shareOptions)
+      .then((res) => console.log('res:', res))
+      .catch(err => console.log('err', err));
+}
 
   render() {
     const { image_url, uid } = this.props.photo;

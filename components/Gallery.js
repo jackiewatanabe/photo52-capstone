@@ -89,11 +89,18 @@ class Gallery extends Component {
   //     );
   //   }
   // }
+  onSubmitPress() {
+    const { theme, start_date } = this.props.challenge;
+    const { challenge_uid, image_url, week } = this.props;
+    // var week_count = week + 1;
+
+    this.props.challengeSave({ theme, image_url, challenge_uid, start_date, week });
+  }
 
   renderSubmitButton() {
     if (this.props.uploadReady) {
       return (
-        <Button>
+        <Button onPress={this.onSubmitPress.bind(this)}>
           SUBMIT MY CHALLENGE
         </Button>
       );
@@ -200,11 +207,12 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state, ownProps) => {
   console.log('mapstatetoprops state.photoForm: ', state.photoForm);
-  const { user, challenge, week } = state.auth;
+  const { user, challenge, week, challenge_ref, challenge_uid } = state.auth;
   const { image_url, uploadReady } = state.photoForm;
+
   // const expanded = state.selectedResultPhotoId === ownProps.photo.id;
 
-  return { image_url, user, uploadReady, challenge, week };
+  return { image_url, user, uploadReady, challenge, week, challenge_ref, challenge_uid };
 };
 
 export default connect(mapStateToProps, actions)(Gallery);

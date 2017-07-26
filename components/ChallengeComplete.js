@@ -8,6 +8,14 @@ import * as actions from '../actions';
 
 class ChallengeComplete extends Component {
 
+    // componentWillMount() {
+    //   this.props.challengeWeekFetch();
+    // }
+    //
+    // componentWillReceiveProps(nextProps) {
+    //   this.props.challengeWeekFetch();
+    // }
+
     onPhotorollPress() {
         Actions.photoList();
     }
@@ -16,7 +24,9 @@ class ChallengeComplete extends Component {
         Actions.themePage({ type: 'reset' });
     }
 
-    render(){
+    render() {
+      const week = this.props.week;
+
       return (
         <Card>
           <CardSection style={{ paddingTop: 20 }}>
@@ -43,7 +53,7 @@ class ChallengeComplete extends Component {
                 Great job on completing
               </Text>
               <Text style={styles.challengeText}>
-                challenge { (this.props.week + 1) } of 52!
+                challenge { (this.props.week) } of 52!
               </Text>
             </View>
           </CardSection>

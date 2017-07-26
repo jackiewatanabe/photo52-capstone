@@ -104,7 +104,7 @@ class Gallery extends Component {
     const { challenge_uid, image_url, week } = this.props;
     // var week_count = week + 1;
 
-    this.props.challengeSave({ theme, image_url, challenge_uid, start_date, week });
+    this.props.challengeSave({ theme, image_url, challenge_uid, start_date, week: (week + 1) });
   }
 
   renderSubmitButton() {

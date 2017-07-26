@@ -48,16 +48,19 @@ export const challengeSave = ({ theme, start_date, image_url, challenge_uid, wee
         console.log('SNAPSHOTWEEK: ', snapshotWeek.val());
         firebase.database().ref(`/users/${currentUser.uid}/challenge_week`)
         .set(snapshotWeek.val() + 1)
-      });
-
+      })
+      .then(() => {
       firebase.database().ref(`/users/${currentUser.uid}/challenge_week`)
       .once('value', updateSnapshotWeek => {
         dispatch({ type: CHALLENGE_UPDATE,
                     payload: updateSnapshotWeek.val()
                 });
+        dispatch({ type: CHALLENGE_COMPLETE, payload: updateSnapshotWeek.val() });
       });
+    });
 
-      dispatch({ type: CHALLENGE_COMPLETE });
+      // dispatch({ type: CHALLENGE_COMPLETE, payload: update });
+      // dispatch({ type: CHALLENGE_FETCH })
 
       Actions.challengeComplete({ type: 'reset' });
       // dispatch({ type: CHALLENGE_COMPLETE });

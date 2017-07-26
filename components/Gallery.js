@@ -111,7 +111,7 @@ class Gallery extends Component {
     if (this.props.uploadReady) {
       return (
         <Button onPress={this.onSubmitPress.bind(this)}>
-          SUBMIT MY CHALLENGE
+          SUBMIT PHOTO
         </Button>
       );
     }
@@ -120,8 +120,8 @@ class Gallery extends Component {
   render() {
     if (this.state.loading) {
       return (
-        <View style={{ alignSelf: 'center' }}>
-          <Text style={{ textAlign: 'center' }}>Image is uploading and prepping for submission</Text>
+        <View style={{ alignSelf: 'center', paddingTop: 30 }}>
+          <Text style={styles.uploadingText}>Image is uploading and prepping for submission</Text>
           <Spinner size='large' />
         </View>
       );
@@ -131,8 +131,8 @@ class Gallery extends Component {
 
     return (
       <View style={styles.container}>
-        <CardSection style={{ alignSelf: 'center' }}>
-          <Text style={styles.text}>Select a photo to upload to this challenge</Text>
+        <CardSection style={{ alignSelf: 'center', paddingTop: 20, paddingBottom: 10 }}>
+          <Text style={styles.text}>Select a photo to upload for this challenge</Text>
         </CardSection>
         <CameraRollPicker
           scrollRenderAheadDistance={500}
@@ -156,16 +156,16 @@ class Gallery extends Component {
         <CardSection style={{ paddingLeft: 10, paddingTop: 20, paddingBottom: 0 }}>
           <Text style={styles.submitText}>SUBMIT PHOTO FOR</Text>
         </CardSection>
-        <CardSection style={{ paddingLeft: 10 }}>
+        <CardSection style={{ paddingLeft: 10, paddingTop: 0 }}>
           <Text style={styles.themeText} >{this.props.challenge.theme.toUpperCase()}</Text>
         </CardSection>
         <CardSection style={{ alignSelf: 'center' }}>
           <Image style={styles.imageStyle} source={{ uri: `${this.props.image_url}` }} />
         </CardSection>
-        <CardSection>
-          <Text style={styles.weekText}>CHALLENGE: Week {this.props.week} of 52</Text>
+        <CardSection style={{ paddingLeft: 10, paddingBottom: 30 }}>
+          <Text style={styles.weekText}>CHALLENGE: Week {this.props.week + 1} of 52</Text>
         </CardSection>
-        <CardSection>
+        <CardSection style={{ alignSelf: 'center', width: 300, paddingTop: 20,  paddingRight: 10 }}>
         {this.renderSubmitButton()}
         </CardSection>
       </View>
@@ -188,10 +188,12 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
   },
   text: {
-    fontSize: 20,
+    fontSize: 15,
     alignItems: 'center',
     color: '#000',
-    fontFamily: 'Iowan Old Style'
+    fontFamily: 'Avenir-Light',
+    // letterSpacing: 2,
+    // textAlign: 'center',
   },
   bold: {
     fontWeight: 'bold',
@@ -208,7 +210,7 @@ const styles = StyleSheet.create({
   },
   submitText: {
     fontFamily: 'Avenir-Light',
-    fontSize: 20,
+    fontSize: 15,
     letterSpacing: 2
   },
   themeText: {
@@ -219,6 +221,11 @@ const styles = StyleSheet.create({
   weekText: {
     fontFamily: 'Avenir-Light',
     letterSpacing: 2
+  },
+  uploadingText: {
+    textAlign: 'center',
+    fontFamily: 'Avenir-Light',
+    fontSize: 13
   }
 });
 

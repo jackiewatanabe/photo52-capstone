@@ -6,7 +6,8 @@ import {
   LOGIN_USER_SUCCESS,
   LOGIN_USER_FAIL,
   LOGIN_USER,
-  CHALLENGE_CREATE
+  CHALLENGE_CREATE,
+  CHALLENGE_FETCH
 } from './types';
 
 export const emailChanged = (text) => {
@@ -88,6 +89,17 @@ export const challengeCreate = (theme) => {
 
         Actions.themePage();
       });
+    });
+  };
+};
+
+export const challengeWeekFetch = () => {
+  const { currentUser } = firebase.auth();
+
+  return (dispatch) => {
+    firebase.database().ref(`/users/${currentUser.uid}/challenge_week`)
+    .once('value', weekSnapshot => {
+      dispatch({ type: CHALLENGE_FETCH, payload: weekSnapshot.val() });
     });
   };
 };

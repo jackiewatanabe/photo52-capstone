@@ -7,17 +7,25 @@ import {
   CHALLENGE_CREATE,
   REHYDRATE,
   CHALLENGE_COMPLETE,
-  CHALLENGE_UPDATE
+  CHALLENGE_UPDATE,
+  CHALLENGE_FETCH
 } from '../actions/types';
 
-const INITIAL_STATE = { email: '', password: '', user: null, error: '', loading: false, challenge: null , week: 0 };
+const INITIAL_STATE = {
+  email: '',
+  password: '',
+  user: null,
+  error: '',
+  loading: false,
+  challenge: null,
+  week: 0
+};
 
 export default (state = INITIAL_STATE, action) => {
     // console.log(action);
-
     switch (action.type) {
       case REHYDRATE:
-        console.log('IN REHYDRATE: ', action.payload.challenger);
+        // console.log('IN REHYDRATE: ', action.payload.challenger);
         return action.payload.auth || [];
       case CHALLENGE_COMPLETE:
       console.log('IN CHALLENGE_COMPLETE');
@@ -25,6 +33,8 @@ export default (state = INITIAL_STATE, action) => {
         return { ...state, challenge: null };
       case CHALLENGE_UPDATE:
         console.log('IN CHALLENGE_UPDATE: ', action.payload);
+        return { ...state, week: action.payload };
+      case CHALLENGE_FETCH:
         return { ...state, week: action.payload };
       case EMAIL_CHANGED:
         return { ...state, email: action.payload };
@@ -46,7 +56,12 @@ export default (state = INITIAL_STATE, action) => {
         return { ...state, error: 'Authentication Failed', loading: false, password: '' };
       case CHALLENGE_CREATE:
         console.log('action.payload: ', action.payload);
-        return { ...state, challenge: action.payload.challenge, challenge_ref: action.payload.ref, challenge_uid: action.payload.uid };
+        return {
+          ...state,
+          challenge: action.payload.challenge,
+          challenge_ref: action.payload.ref,
+          challenge_uid: action.payload.uid
+        };
       default:
         return state;
     }

@@ -19,7 +19,7 @@ class ChallengeComplete extends Component {
     render(){
       return (
         <Card>
-          <CardSection>
+          <CardSection style={{ paddingTop: 20 }}>
             <View style={styles.textContainer}>
               <Text style={styles.congratsText}>
                 YAY!
@@ -43,16 +43,16 @@ class ChallengeComplete extends Component {
                 Great job on completing
               </Text>
               <Text style={styles.challengeText}>
-                challenge { (this.props.week) } of 52!
+                challenge { (this.props.week + 1) } of 52!
               </Text>
             </View>
           </CardSection>
-          <CardSection style={{ alignSelf: 'center', width: 250 }}>
+          <CardSection style={{ alignSelf: 'center', width: 300 }}>
             <Button onPress={this.onPhotorollPress.bind(this)}>
               SEE YOUR PHOTO ROLL
             </Button>
           </CardSection>
-          <CardSection style={{ alignSelf: 'center', width: 250 }}>
+          <CardSection style={{ alignSelf: 'center', width: 300 }}>
             <Button onPress={this.onNextChallengePress.bind(this)}>
               GET NEXT CHALLENGE
             </Button>
@@ -70,13 +70,13 @@ const styles = {
   congratsText: {
     alignSelf: 'center',
     fontFamily: 'Avenir-Light',
-    fontSize: 40,
+    fontSize: 35,
     textAlign: 'center'
   },
   challengeText: {
     alignSelf: 'center',
     fontFamily: 'Iowan Old Style',
-    fontSize: 25,
+    fontSize: 20,
     textAlign: 'center'
   },
   fillerContainer: {

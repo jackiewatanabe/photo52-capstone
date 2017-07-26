@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { Card, CardSection, Button } from './common';
 // import { themeChanged } from '../actions';
-import { challengeCreate, photoCreate } from '../actions';
+import { challengeCreate, photoCreate, challengeWeekFetch } from '../actions';
 
 class ThemePage extends Component {
 
@@ -15,7 +15,8 @@ class ThemePage extends Component {
     }
 
     onButtonPress() {
-      const myThemes = ['black and white', 'Leading Lines', 'circles', 'morning', 'long exposure', 'night sky', 'portrait of a stranger', 'water', 'self-portrait', 'silhouette', 'movement', 'messy', 'weather', 'transportation', 'blue', 'red', 'colors', 'minimalism', 'bokeh', 'SOLITUDE', 'GET HIGH', 'GET LOW', 'FASHION', 'TRENDY', 'STREET CANDID', 'food', 'symmetry', 'wabisabi', 'music', 'texture', 'close-up', 'light painting', 'business', 'formal', 'favorite', 'mid-day', 'feet', 'hands', 'shadows', 'angles', 'growth', 'soft', 'friendship', 'furry friends', 'distance', 'nostalgia', 'blur'];
+      const myThemes = ['circles', 'morning', 'water', 'silhouette', 'movement', 'messy', 'weather', 'transportation', 'blue', 'red', 'minimalism', 'bokeh', 'food', 'symmetry', 'music', 'close-up', 'feet', 'hands', 'shadows', 'angles', 'friendship', 'furry friends', 'distance', 'blur'];
+
       const rand = myThemes[Math.floor(Math.random() * myThemes.length)];
 
       this.props.challengeCreate(rand);
@@ -135,6 +136,8 @@ class ThemePage extends Component {
     }
 
     render() {
+      this.props.challengeWeekFetch();
+
       return (
         <Card>
           <CardSection>
@@ -181,4 +184,4 @@ const mapStateToProps = ({ auth }) => {
   return { challenge, week, expanded };
 };
 
-export default connect(mapStateToProps, { challengeCreate, photoCreate })(ThemePage);
+export default connect(mapStateToProps, { challengeWeekFetch, challengeCreate, photoCreate })(ThemePage);

@@ -37,3 +37,5 @@ export const CHALLENGE_SAVE = 'challenge_save';
 export const CHALLENGE_COMPLETE = 'challenge_complete';
 
 export const CHALLENGE_UPDATE = 'challenge_update';
+
+export const CHALLENGE_FETCH = 'challenge_fetch';

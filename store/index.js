@@ -15,6 +15,6 @@ const store = createStore(
 
 // console.log('MADE IT TO STORE');
 
-persistStore(store, { storage: AsyncStorage, whitelist: ['auth'] });
+persistStore(store, { storage: AsyncStorage, whitelist: ['auth'] }).purge();
 
 export default store;

@@ -24,7 +24,7 @@ const RouterComponent = () => {
   const myStarIcon = (<Icon name="star-border" size={30} color="#fff" style={{ alignSelf: 'center', textAlign: 'center' }} />)
 
   return (
-    <Router sceneStyle={{ paddingTop: 65 }}>
+    <Router sceneStyle={{ paddingTop: 60 }}>
       <Scene key="auth"
         navigationBarStyle={styles.navigationBar} titleStyle={styles.navbarTitle}
       >

@@ -11,6 +11,8 @@ class ChallengeComplete extends Component {
   render() {
     const stars = [];
 
+    this.props.challengeWeekFetch();
+
     let starCount = this.props.week;
 
     // if (this.props.challenge !== null) {
@@ -40,7 +42,7 @@ class ChallengeComplete extends Component {
 
     return (
       <Card>
-        <CardSection style={{ alignSelf: 'center' }}>
+        <CardSection style={{ alignSelf: 'center', paddingTop: 10, paddingBottom: 10 }}>
           <View>
             <Text
               style={styles.titleStyle}
@@ -64,8 +66,10 @@ class ChallengeComplete extends Component {
 const styles = {
   titleStyle: {
     alignSelf: 'center',
-    fontFamily: 'Iowan Old Style',
-    fontSize: 25
+    fontFamily: 'Avenir-Light',
+    fontSize: 22,
+    letterSpacing: 2,
+    textAlign: 'center'
   }
 };
 

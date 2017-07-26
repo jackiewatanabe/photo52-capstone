@@ -36,16 +36,12 @@ class ThemePage extends Component {
     renderChallengeButton() {
       switch (this.props.challenge === null) {
         case true:
-          console.log('THEMEPAGE Im in switch case true in renderButton');
-          console.log('THEMEPAGE STATE.THEME:', this.props.theme);
           return (
             <Button onPress={this.onButtonPress.bind(this)}>
               GIVE ME A CHALLENGE
             </Button>
           );
         case false:
-          console.log('THEMEPAGE Im in switch case false in renderButton');
-          console.log('THEMEPAGE STATE.THEME:', this.props);
           return (
                 <View style={{ alignSelf: 'center', flex: 1, paddingBottom: 15, paddingTop: 10 }}>
                   <Text
@@ -150,7 +146,7 @@ class ThemePage extends Component {
                   fontWeight: '100',
                   fontSize: 30,
                   letterSpacing: 2 }}
-              >WEEK {this.props.week} OF 52</Text>
+              >WEEK {this.props.week + 1} OF 52</Text>
             </View>
           </CardSection>
 

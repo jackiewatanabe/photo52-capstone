@@ -5,7 +5,8 @@ import {
   PHOTO_CREATE,
   PHOTOS_FETCH_SUCCESS,
   CHALLENGE_SAVE,
-  CHALLENGE_COMPLETE
+  CHALLENGE_COMPLETE,
+  CHALLENGE_UPDATE
 } from './types';
 
 export const photoUpdate = ({ prop, value }) => {
@@ -33,24 +34,51 @@ export const challengeSave = ({ theme, start_date, image_url, challenge_uid, wee
   const today = new Date();
   const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
   const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-  const dateTime = date + ' ' + time;
+  // const dateTime = date + ' ' + time;
 
   const { currentUser } = firebase.auth();
 
   return (dispatch) => {
     firebase.database().ref(`/users/${currentUser.uid}/challenges/${challenge_uid}`)
-    .set({ theme, start_date, image_url, complete: true, end_date: dateTime, week })
+    .set({ theme, start_date, image_url, complete: true, end_date: date, week })
     .then(() => {
       dispatch({ type: CHALLENGE_SAVE });
+      firebase.database().ref(`/users/${currentUser.uid}/challenge_week`)
+      .once('value', snapshotWeek => {
+        console.log('SNAPSHOTWEEK: ', snapshotWeek.val());
+        firebase.database().ref(`/users/${currentUser.uid}/challenge_week`)
+        .set(snapshotWeek.val() + 1)
+      });
+
+      firebase.database().ref(`/users/${currentUser.uid}/challenge_week`)
+      .once('value', updateSnapshotWeek => {
+        dispatch({ type: CHALLENGE_UPDATE,
+                    payload: updateSnapshotWeek.val()
+                });
+      });
+
+      dispatch({ type: CHALLENGE_COMPLETE });
+
       Actions.challengeComplete({ type: 'reset' });
       // dispatch({ type: CHALLENGE_COMPLETE });
       // updateChallengeCount();
       // const data = { challenge: null, week: week_count };
-      dispatch({ type: CHALLENGE_COMPLETE, payload: (week + 1) });
-      // challengeCompleted(week_count);
+      // dispatch({ type: CHALLENGE_COMPLETE, payload: (week + 1) });
     });
   };
 };
+
+// export const updateChallengeCount = () => {
+//     const { currentUser } = firebase.auth();
+//     return (dispatch) => {
+//     firebase.database().ref(`/users/${currentUser.uid}/challenge_week`)
+//     .once('value', updateSnapshotWeek => {
+//       dispatch({ type: CHALLENGE_UPDATE,
+//                   payload: updateSnapshotWeek.val()
+//               });
+//     });
+//   };
+// };
 
 // export const updateChallengeCount = () => {
 //   const { currentUser } = firebase.auth();

@@ -43,7 +43,7 @@ class ChallengeComplete extends Component {
                 Great job on completing
               </Text>
               <Text style={styles.challengeText}>
-                challenge { (this.props.week - 1) } of 52!
+                challenge { (this.props.week) } of 52!
               </Text>
             </View>
           </CardSection>

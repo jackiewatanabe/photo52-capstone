@@ -41,7 +41,7 @@ class PhotoListItem extends Component {
           <Icon
               name="share"
               size={35} color="#fff"
-              style={{ alignSelf: 'center', textAlign: 'center' }}
+              style={{ alignSelf: 'center', textAlign: 'center', paddingTop: 5, paddingRight: 5 }}
           />
         </TouchableOpacity>
       </CardSection>

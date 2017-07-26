@@ -11,13 +11,13 @@ class ChallengeComplete extends Component {
   render() {
     const stars = [];
 
-    let starCount = 0;
+    let starCount = this.props.week;
 
-    if (this.props.challenge !== null) {
-      starCount = (this.props.week - 1);
-    } else {
-      starCount = (this.props.week);
-    }
+    // if (this.props.challenge !== null) {
+    //   starCount = (this.props.week - 1);
+    // } else {
+    //   starCount = (this.props.week);
+    // }
 
     _.times(starCount, (i) => {
       stars.push(<Icon

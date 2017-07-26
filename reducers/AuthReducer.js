@@ -6,10 +6,11 @@ import {
   LOGIN_USER,
   CHALLENGE_CREATE,
   REHYDRATE,
-  CHALLENGE_COMPLETE
+  CHALLENGE_COMPLETE,
+  CHALLENGE_UPDATE
 } from '../actions/types';
 
-const INITIAL_STATE = { email: '', password: '', user: null, error: '', loading: false, challenge: null , week: 1 };
+const INITIAL_STATE = { email: '', password: '', user: null, error: '', loading: false, challenge: null , week: 0 };
 
 export default (state = INITIAL_STATE, action) => {
     // console.log(action);
@@ -21,7 +22,10 @@ export default (state = INITIAL_STATE, action) => {
       case CHALLENGE_COMPLETE:
       console.log('IN CHALLENGE_COMPLETE');
       console.log('challenge_complete:', action.payload);
-        return { ...state, challenge: null, week: action.payload };
+        return { ...state, challenge: null };
+      case CHALLENGE_UPDATE:
+        console.log('IN CHALLENGE_UPDATE: ', action.payload);
+        return { ...state, week: action.payload };
       case EMAIL_CHANGED:
         return { ...state, email: action.payload };
       case PASSWORD_CHANGED:

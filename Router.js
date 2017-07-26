@@ -74,7 +74,7 @@ const RouterComponent = () => {
         />
         <Scene
           key="gallery" component={Gallery}
-          title="Gallery"
+          title="GALLERY"
         />
         <Scene
           key="shareGallery" component={ShareGallery}

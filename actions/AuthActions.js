@@ -23,13 +23,6 @@ export const passwordChanged = (text) => {
     };
 };
 
-// export const themeChanged = (theme) => {
-//   return {
-//     type: THEME_CHANGED,
-//     payload: theme
-//   };
-// };
-
 export const loginUser = ({ email, password }) => {
   return (dispatch) => {
     dispatch({ type: LOGIN_USER });
@@ -60,20 +53,28 @@ export const loginUserSuccess = (dispatch, user) => {
   Actions.main();
 };
 
-
 export const challengeCreate = (theme) => {
   console.log('theme: ', theme);
 
   const today = new Date();
-  const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-  const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-  const dateTime = date+' '+time;
+  const date = today.getFullYear() + '-' + (today.getMonth()+1)+'-'+today.getDate();
+  const time = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
+  // const dateTime = date + ' ' + time;
 
   const { currentUser } = firebase.auth();
 
   return (dispatch) => {
+    const weekCount = firebase.database().ref(`/users/${currentUser.uid}/challenge_week`);
+
+    const ref1 = firebase.database().ref(`/users/${currentUser.uid}`)
+
+    if (weekCount === undefined) {
+      ref1.child(`challenge_week_new`).set(0);
+      //create challenge week count here!!!
+    }
+
     firebase.database().ref(`/users/${currentUser.uid}/challenges`)
-    .push({ theme, start_date: dateTime })
+    .push({ theme, start_date: date })
     .then(challenge => {
       console.log('CHALLENGE!! ', challenge);
       challenge.once('value', challengeSnapshot => {
@@ -84,10 +85,9 @@ export const challengeCreate = (theme) => {
                     uid: challenge.path.o[3]
                    }
                  });
-        //.then(dispatch({ type: FIND_CHALLENGE }))
-        Actions.themePage();
-      })
 
+        Actions.themePage();
+      });
     });
   };
 };

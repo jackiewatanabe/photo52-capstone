@@ -85,60 +85,6 @@ class PhotoCreate extends Component {
 
     return (
       <Card>
-      <CardSection style={styles.container}>
-        <Modal
-          animationType={'slide'}
-          transparent={false}
-          visible={this.state.modalVisible}
-          onRequestClose={() => console.log('closed')}
-        >
-          <View style={styles.modalContainer}>
-            <Button
-              title='Close'
-              onPress={this.toggleModal}
-            />
-            <ScrollView
-              contentContainerStyle={styles.scrollView}
-            >
-              {
-                this.state.photos.map((p, i) => {
-                  return (
-                    <TouchableHighlight
-                      style={{ opacity: i === this.state.index ? 0.5 : 1 }}
-                      key={i}
-                      underlayColor='transparent'
-                      onPress={() => this.setIndex(i)}
-                    >
-                      <ImageBackground
-                        style={{
-                          width: width / 3,
-                          height: width / 3
-                        }}
-                        source={{ uri: p.node.image.uri }}
-                      />
-                    </TouchableHighlight>
-                  );
-                })
-              }
-            </ScrollView>
-            {
-              this.state.index !== null && (
-                <View style={styles.shareButton}>
-                  <Button
-                      title='asdfasdf'
-                      onPress={this.share}
-                  />
-                  <Button
-                      title='Select'
-                      onPress={this.select}
-                  />
-                </View>
-              )
-            }
-          </View>
-        </Modal>
-      </CardSection>
-
         <CardSection>
           <Button
            onPress={this.onChooseButtonPress.bind(this)}
@@ -161,7 +107,6 @@ class PhotoCreate extends Component {
       </Card>
     );
   }
-
 }
 
 
@@ -210,53 +155,6 @@ const styles = StyleSheet.create({
     left: 0
   }
 });
-//
-// const styles = {
-//   pickerTextStyle: {
-//     fontSize: 18,
-//     paddingLeft: 20
-//   },
-//   container: {
-//     flex: 1,
-//     backgroundColor: 'red',
-//     justifyContent: 'center',
-//     alignItems: 'center'
-//   },
-//   content: {
-//     marginTop: 15,
-//     height: 50,
-//     flexDirection: 'row',
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     flexWrap: 'wrap',
-//   },
-//   text: {
-//     fontSize: 16,
-//     alignItems: 'center',
-//     color: '#fff',
-//   },
-//   bold: {
-//     fontWeight: 'bold',
-//   },
-//   info: {
-//     fontSize: 12,
-//   },
-//   modalContainer: {
-//     paddingTop: 20,
-//     flex: 1
-//   },
-//   scrollView: {
-//     flexWrap: 'wrap',
-//     flexDirection: 'row'
-//   },
-//   shareButton: {
-//     position: 'absolute',
-//     width: 200,
-//     padding: 10,
-//     bottom: 0,
-//     left: 0
-//   }
-// };
 
 const mapStateToProps = (state) => {
   const { image_url } = state.photoForm;

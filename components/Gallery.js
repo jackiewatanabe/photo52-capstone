@@ -22,7 +22,17 @@ class Gallery extends Component {
       this.state = {
         loading: false,
       };
-    }
+
+      // this.onChange = this.onChange.bind(this);
+  }
+
+  // componentDidMount() {
+  //       this.setState({ loading: false });
+  // }
+
+  // componentWillReceiveProps(nextProps) {
+  //     this.setState({ loading: false });
+  // }
 
   getSelectedImages = (selectedImages, currentImage) => {
     // let loading = false;
@@ -41,10 +51,10 @@ class Gallery extends Component {
 
     let uploadBlob = null;
     Alert.alert(
-    'Upload Photo',
-    'Do you want to upload this photo?',
+    'Photo Upload',
+    'Do you want to upload this photo for submission?',
     [
-      { text: 'Ask me later', onPress: () => console.log('Ask me later pressed') },
+      // { text: 'Ask me later', onPress: () => console.log('Ask me later pressed') },
       { text: 'Cancel', onPress: () => Actions.shareGallery(), style: 'cancel' },
       { text: 'OK', onPress: () => {
           this.setState({ loading: true })
@@ -66,14 +76,14 @@ class Gallery extends Component {
             })
             .then((url) => {
               // URL of the image uploaded on Firebase storage
-              console.log(url);
 
-              console.log('this.props.upload_image_url: ', this.props.image_url);
               this.props.photoUpdate({ prop: 'image_url', value: url });
-              this.setState({ loading: false });
+
+
               // Actions.photoCreate();
               // renderSubmitButton();
             })
+            .then(() => { this.setState({ loading: false }); })
             .catch((error) => {
               console.log(error);
             });} },
@@ -110,7 +120,10 @@ class Gallery extends Component {
   render() {
     if (this.state.loading) {
       return (
-        <Spinner size='large' />
+        <View style={{ alignSelf: 'center' }}>
+          <Text style={{ textAlign: 'center' }}>Image is uploading and prepping for submission</Text>
+          <Spinner size='large' />
+        </View>
       );
     }
 
@@ -118,6 +131,9 @@ class Gallery extends Component {
 
     return (
       <View style={styles.container}>
+        <CardSection style={{ alignSelf: 'center' }}>
+          <Text style={styles.text}>Select a photo to upload to this challenge</Text>
+        </CardSection>
         <CameraRollPicker
           scrollRenderAheadDistance={500}
           initialListSize={1}
@@ -161,7 +177,7 @@ class Gallery extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#817f7f',
+    backgroundColor: '#fff',
   },
   content: {
     marginTop: 15,
@@ -172,9 +188,10 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
   },
   text: {
-    fontSize: 16,
+    fontSize: 20,
     alignItems: 'center',
-    color: '#fff',
+    color: '#000',
+    fontFamily: 'Iowan Old Style'
   },
   bold: {
     fontWeight: 'bold',
@@ -208,11 +225,11 @@ const styles = StyleSheet.create({
 const mapStateToProps = (state, ownProps) => {
   console.log('mapstatetoprops state.photoForm: ', state.photoForm);
   const { user, challenge, week, challenge_ref, challenge_uid } = state.auth;
-  const { image_url, uploadReady } = state.photoForm;
+  const { image_url, uploadReady, loading } = state.photoForm;
 
   // const expanded = state.selectedResultPhotoId === ownProps.photo.id;
 
-  return { image_url, user, uploadReady, challenge, week, challenge_ref, challenge_uid };
+  return { image_url, user, uploadReady, challenge, week, challenge_ref, challenge_uid, loading };
 };
 
 export default connect(mapStateToProps, actions)(Gallery);

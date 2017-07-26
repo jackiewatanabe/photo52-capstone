@@ -16,11 +16,11 @@ class ThemePage extends Component {
     }
 
     onButtonPress() {
-      const myThemes = ['morning', 'furry friends', 'silhouette', 'movement', 'messy', 'weather', 'blue', 'red', 'minimalism', 'bokeh', 'food', 'symmetry', 'music', 'close-up', 'feet', 'hands', 'shadows', 'angles', 'friendship', 'water', 'distance', 'blur', 'transportation'];
+      const myThemes = ['morning', 'furry friends', 'silhouette', 'movement', 'weather', 'blue', 'red', 'minimalism', 'bokeh', 'food', 'symmetry', 'music', 'close-up', 'feet', 'hands', 'angles', 'friendship', 'water', 'distance', 'blur'];
 
       const rand = myThemes[Math.floor(Math.random() * myThemes.length)];
       const { currentUser } = firebase.auth();
-      
+
       firebase.database().ref(`/users/${currentUser.uid}/challenges`)
       .once('value', challengesSnapshot => {
         const challengeList = challengesSnapshot;

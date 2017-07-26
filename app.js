@@ -45,11 +45,11 @@ class App extends Component {
     if (appState === 'background') {
       //TODO: schedule background notifications
       PushNotification.localNotificationSchedule({
-        message: 'Dont forget to complete your challenge!!', // (required)
+        message: `Dont forget to take a photo for the week! ^_^ You have 7 days left to complete your challenge!`, // (required)
         date: new Date(Date.now() + (5 * 1000)), // in 5 secs
         number: 0,
       });
-      console.log('app is in background');
+      console.log('app is in background, props: ', this.props);
     }
   }
 

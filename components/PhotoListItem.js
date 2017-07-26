@@ -142,3 +142,5 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 export default connect(mapStateToProps, actions)(PhotoListItem);
+//
+// defaultSource={require('../assets/logos/placeholder-4-500x300.png')}

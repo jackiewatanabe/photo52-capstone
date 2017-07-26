@@ -8,13 +8,9 @@ import * as actions from '../actions';
 
 class ChallengeComplete extends Component {
 
-    // componentWillMount() {
-    //   this.props.challengeWeekFetch();
-    // }
-    //
-    // componentWillReceiveProps(nextProps) {
-    //   this.props.challengeWeekFetch();
-    // }
+    componentWillMount() {
+      this.props.challengeWeekFetch();
+    }
 
     onPhotorollPress() {
         Actions.photoList();
@@ -97,13 +93,11 @@ const styles = {
   fillerText: {
     textAlign: 'center',
     alignSelf: 'center',
-    // justifyContent: 'center'
   }
 };
 
 const mapStateToProps = ({ auth }) => {
   const { week } = auth;
-  const expanded = false;
 
   return { week };
 };

@@ -13,10 +13,6 @@ class ThemeItem extends Component {
   }
 
   onButtonPress() {
-      // const { name, description, category, image_url } = this.props;
-
-      // this.props.photoCreate({
-      //   name, description, category: category || 'uncategorized', image_url });
       Actions.themePage({ theme: this.props.theme });
   }
 

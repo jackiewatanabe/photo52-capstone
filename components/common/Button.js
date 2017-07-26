@@ -28,13 +28,8 @@ const styles = {
   buttonStyle: {
     flex: 1,
     alignSelf: 'center',
-    // justifyContent: 'flex-end',
     backgroundColor: '#817f7f',
-    // borderRadius: 5,
-    // borderWidth: 1,
     borderColor: '#817f7f',
-    // marginLeft: 5,
-    // marginRight: 5
   }
 };
 

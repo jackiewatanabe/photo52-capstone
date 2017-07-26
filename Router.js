@@ -8,13 +8,10 @@ import PhotoCreate from './components/PhotoCreate';
 import ThemePage from './components/ThemePage';
 import InspirationPage from './components/InspirationPage';
 import InspirationChoice from './components/InspirationChoice';
-// import Example from './components/Example';
-import PhotoSelect from './PhotoSelect';
 import Gallery from './components/Gallery';
 import ShareGallery from './components/ShareGallery';
 import ChallengeComplete from './components/ChallengeComplete';
 import ChallengeHistory from './components/ChallengeHistory';
-import PushNotifications from './components/PushNotifications';
 
 const RouterComponent = () => {
   const myIcon = (<Icon name="account-circle" size={30} color="#fff" style={{ alignSelf: 'center', textAlign: 'center' }} />);
@@ -39,26 +36,26 @@ const RouterComponent = () => {
         leftTitle={myGridIcon}
         onRight={() => Actions.challengeHistory()}
         rightTitle={myStarIcon}
+        leftButtonIconStyle={{ tintColor: 'white' }}
         />
         <Scene key="photoCreate" component={PhotoCreate} title="Create Photo" />
         <Scene
           key="photoList" component={PhotoList} title="Photoroll"
           onLeft={() => Actions.userPage()}
           leftTitle={myIcon}
+          leftButtonIconStyle={{ tintColor: 'white' }}
         />
         <Scene
           key="themePage" component={ThemePage} title="THEME PAGE"
           onLeft={() => Actions.userPage()}
           leftTitle={myIcon}
+          leftButtonIconStyle={{ tintColor: 'white' }}
         />
         <Scene
           key="inspirationPage" component={InspirationPage}
           onLeft={() => Actions.userPage()}
           leftTitle="User Page"
-        />
-        <Scene
-          key="photoSelect" component={PhotoSelect}
-          title="Photo Select"
+          leftButtonIconStyle={{ tintColor: 'white' }}
         />
         <Scene
           key="photoList" component={PhotoList}
@@ -67,18 +64,22 @@ const RouterComponent = () => {
           leftTitle="User Page"
           onRight={() => Actions.challengeHistory()}
           rightTitle={myStarIcon}
+          leftButtonIconStyle={{ tintColor: 'white' }}
         />
         <Scene
           key="inspirationChoice" component={InspirationChoice}
           title="INSPIRATION"
+          leftButtonIconStyle={{ tintColor: 'white' }}
         />
         <Scene
           key="gallery" component={Gallery}
           title="GALLERY"
+          leftButtonIconStyle={{ tintColor: 'white' }}
         />
         <Scene
           key="shareGallery" component={ShareGallery}
           title="SHARE"
+          leftButtonIconStyle={{ tintColor: 'white' }}
         />
         <Scene
           key="challengeComplete" component={ChallengeComplete}
@@ -87,10 +88,12 @@ const RouterComponent = () => {
           leftTitle={myIcon}
           onRight={() => Actions.challengeHistory()}
           rightTitle={myStarIcon}
+          leftButtonIconStyle={{ tintColor: 'white' }}
         />
         <Scene
           key="challengeHistory" component={ChallengeHistory}
           title="PROGRESS"
+          leftButtonIconStyle={{ tintColor: 'white' }}
         />
       </Scene>
 

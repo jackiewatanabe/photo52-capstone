@@ -2,12 +2,7 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   CameraRoll,
-  View,
-  Modal,
-  ScrollView,
-  TouchableHighlight,
   Dimensions,
-  ImageBackground
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
@@ -37,7 +32,6 @@ class PhotoCreate extends Component {
   onButtonPress() {
     const { theme, start_date } = this.props.challenge;
     const { challenge_uid, image_url, week } = this.props;
-    // var week_count = week + 1;
 
     this.props.challengeSave({ theme, image_url, challenge_uid, start_date, week });
   }
@@ -109,7 +103,6 @@ class PhotoCreate extends Component {
   }
 }
 
-
 const styles = StyleSheet.create({
   pickerTextStyle: {
     fontSize: 18,
@@ -140,7 +133,6 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   modalContainer: {
-    // paddingTop: 20,
     flex: 1
   },
   scrollView: {

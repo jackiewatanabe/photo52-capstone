@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import firebase from 'firebase';
 import { View, Text, LayoutAnimation, TouchableWithoutFeedback } from 'react-native';
 // import axios from 'axios';
 // import UserDetail from './UserDetail';
@@ -15,9 +16,16 @@ class ThemePage extends Component {
     }
 
     onButtonPress() {
-      const myThemes = ['circles', 'morning', 'water', 'silhouette', 'movement', 'messy', 'weather', 'transportation', 'blue', 'red', 'minimalism', 'bokeh', 'food', 'symmetry', 'music', 'close-up', 'feet', 'hands', 'shadows', 'angles', 'friendship', 'furry friends', 'distance', 'blur'];
+      const myThemes = ['morning', 'furry friends', 'silhouette', 'movement', 'messy', 'weather', 'blue', 'red', 'minimalism', 'bokeh', 'food', 'symmetry', 'music', 'close-up', 'feet', 'hands', 'shadows', 'angles', 'friendship', 'water', 'distance', 'blur', 'transportation'];
 
       const rand = myThemes[Math.floor(Math.random() * myThemes.length)];
+      const { currentUser } = firebase.auth();
+      
+      firebase.database().ref(`/users/${currentUser.uid}/challenges`)
+      .once('value', challengesSnapshot => {
+        const challengeList = challengesSnapshot;
+        console.log('THEMEPAGE CHALLENGELIST:', challengeList);
+      });
 
       this.props.challengeCreate(rand);
     }

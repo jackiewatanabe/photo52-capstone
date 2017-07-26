@@ -21,7 +21,7 @@ class App extends Component {
   }
 
   componentWillMount() {
-    // console.disableYellowBox = true;
+    console.disableYellowBox = true;
     const config = {
       apiKey: 'AIzaSyCzVJ58tgRgTsbjnYNeX1WR16pWUqybvGw',
       authDomain: 'photo52authentication.firebaseapp.com',

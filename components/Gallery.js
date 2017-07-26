@@ -132,7 +132,7 @@ class Gallery extends Component {
     return (
       <View style={styles.container}>
         <CardSection style={{ alignSelf: 'center', paddingTop: 20, paddingBottom: 10 }}>
-          <Text style={styles.text}>Select a photo to upload for this challenge</Text>
+          <Text style={styles.text}>Select a photo to upload for {this.props.challenge.theme.toUpperCase()} challenge</Text>
         </CardSection>
         <CameraRollPicker
           scrollRenderAheadDistance={500}
